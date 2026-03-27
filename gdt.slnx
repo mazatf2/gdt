@@ -1,0 +1,8 @@
+<Solution>
+	<Folder Name="/router/">
+		<Project Path="router/gdt.router.csproj" />
+	</Folder>
+	<Folder Name="/tools/">
+		<File Path="tools/package.json" />
+	</Folder>
+</Solution>

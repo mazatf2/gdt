@@ -1,0 +1,9 @@
+﻿{
+	"scripts": {
+		"build": "dotnet build tscn_cs_subscript_fix.cs",
+		"run": "dotnet run tscn_cs_subscript_fix.cs --",
+		"pack": "dotnet pack tscn_cs_subscript_fix.cs",
+		"clean": "dotnet clean tscn_cs_subscript_fix.cs",
+		"install": "dotnet tool uninstall --global tscn_cs_subscript_fix & dotnet tool install --global --add-source ./nupkg tscn_cs_subscript_fix"
+	}
+}

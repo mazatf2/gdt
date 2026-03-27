@@ -1,0 +1,13 @@
+﻿# User-specific stuff
+**/.idea
+
+**/*.user
+
+**/.bin
+**/.export
+**/.build
+**/.godot
+
+**/artifacts
+**/bin
+**/nupkg

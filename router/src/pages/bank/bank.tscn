@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://bovflgrbotkeq"]
+
+[ext_resource type="Script" uid="uid://fhp442nbsvhc" path="res://src/pages/bank/Bank.cs" id="1_0uher"]
+
+[node name="bank" type="Node" unique_id=2069487096]
+script = ExtResource("1_0uher")
+
+[node name="table" type="VBoxContainer" parent="." unique_id=1398094606]
+offset_right = 1152.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="headerRow" type="HBoxContainer" parent="table" unique_id=89741316]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="fill0" type="Label" parent="table/headerRow" unique_id=208757744]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill0"
+
+[node name="fill1" type="Label" parent="table/headerRow" unique_id=179908843]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill1"
+
+[node name="fill2" type="Label" parent="table/headerRow" unique_id=1120306502]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill2"
+
+[node name="bodyRow" type="HBoxContainer" parent="table" unique_id=1072716968]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="fill0" type="Label" parent="table/bodyRow" unique_id=1679870224]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill0"
+
+[node name="content" type="VBoxContainer" parent="table/bodyRow" unique_id=933889846]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="@FlowContainer@19281" type="FlowContainer" parent="table/bodyRow/content" unique_id=1877741179]
+layout_mode = 2
+
+[node name="@Button@19278" type="Button" parent="table/bodyRow/content/@FlowContainer@19281" unique_id=655914143]
+layout_mode = 2
+text = "Take loan"
+
+[node name="@Button@19279" type="Button" parent="table/bodyRow/content/@FlowContainer@19281" unique_id=413819991]
+layout_mode = 2
+text = "Payback loan"
+
+[node name="@Button@19280" type="Button" parent="table/bodyRow/content/@FlowContainer@19281" unique_id=1139189643]
+layout_mode = 2
+text = "Active loans: 
+
+0"
+
+[node name="fill2" type="Label" parent="table/bodyRow" unique_id=2043990938]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill2"
+
+[node name="footerRow" type="HBoxContainer" parent="table" unique_id=1486943978]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="fill0" type="Label" parent="table/footerRow" unique_id=1847214735]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill0"
+
+[node name="@FlowContainer@19282" type="FlowContainer" parent="table/footerRow" unique_id=397114422]
+layout_mode = 2
+
+[node name="mainBtn" type="Button" parent="table/footerRow/@FlowContainer@19282" unique_id=206313521]
+layout_mode = 2
+text = "Back"
+
+[node name="fill2" type="Label" parent="table/footerRow" unique_id=771443850]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill2"

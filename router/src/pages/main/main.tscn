@@ -1,0 +1,95 @@
+[gd_scene format=3 uid="uid://sf4ec6lu84or"]
+
+[ext_resource type="Script" uid="uid://conxilt6g3nfa" path="res://src/pages/main/Main.cs" id="1_xefci"]
+[ext_resource type="Texture2D" uid="uid://bsotbwi6qwjmo" path="res://src/pages/main/background earth.svg" id="2_4d80n"]
+
+[node name="main" type="Node" unique_id=800627582]
+script = ExtResource("1_xefci")
+
+[node name="centerContainer" type="CenterContainer" parent="." unique_id=1717116592]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="textureRect" type="TextureRect" parent="centerContainer" unique_id=993559871]
+layout_mode = 2
+texture = ExtResource("2_4d80n")
+
+[node name="row" type="VBoxContainer" parent="." unique_id=1896315446]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="header" type="HBoxContainer" parent="row" unique_id=1446371658]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="label" type="Label" parent="row/header" unique_id=2067387346]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "header"
+
+[node name="infoEl" type="HBoxContainer" parent="row/header" unique_id=1788459187]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="label3" type="Label" parent="row/header" unique_id=1368810349]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "header"
+
+[node name="body" type="HBoxContainer" parent="row" unique_id=1274490998]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="label" type="Label" parent="row/body" unique_id=1818108713]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "body"
+
+[node name="label2" type="Label" parent="row/body" unique_id=254247088]
+layout_mode = 2
+text = "body"
+
+[node name="label3" type="Label" parent="row/body" unique_id=357732343]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "body"
+
+[node name="footer" type="HBoxContainer" parent="row" unique_id=464406508]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="label" type="Label" parent="row/footer" unique_id=1157010746]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "footer"
+
+[node name="boxContainer" type="VBoxContainer" parent="row/footer" unique_id=1536855089]
+layout_mode = 2
+alignment = 1
+
+[node name="nav" type="HBoxContainer" parent="row/footer/boxContainer" unique_id=1552031880]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="nav2" type="HBoxContainer" parent="row/footer/boxContainer" unique_id=1262547690]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="label3" type="Label" parent="row/footer" unique_id=208229278]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "footer"
