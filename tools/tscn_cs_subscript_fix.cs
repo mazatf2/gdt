@@ -40,8 +40,8 @@ class Program {
 			var scriptPattersList = new List<string>();
 			var indexes2Del = new List<int>();
 			foreach (var (i, tscnLine) in tscnLines.Index()) {
-				var resourcePattern = """[sub_resource type="CSharpScript" id="CSharpScript_"""; //0uher"]
 				{
+					var resourcePattern = """[sub_resource type="CSharpScript" id="CSharpScript_"""; //0uher"]
 					var isMatch = tscnLine.StartsWith(resourcePattern);
 					if (isMatch) {
 						//script = SubResource("CSharpScript_0uher")
@@ -49,6 +49,7 @@ class Program {
 						var scriptPattern = $"""script = SubResource("CSharpScript_{id}")""";
 						scriptPattersList.Add(scriptPattern);
 						indexes2Del.Add(i);
+						indexes2Del.Add(i + 1);
 						continue;
 					}
 				}
@@ -62,15 +63,20 @@ class Program {
 				}
 			}
 
-			if (indexes2Del.Count == 0) continue;
+			if (indexes2Del.Count == 0) {
+				continue;
+			}
 
 			Console.WriteLine(tscnFilepath);
 			foreach (var lineNum in indexes2Del) {
 				Console.WriteLine($"remove {tscnLines[lineNum]}");
-				tscnLines[lineNum] = "";
+				tscnLines[lineNum] = "2remove";
 			}
 
-			File.WriteAllLines(tscnFilepath, tscnLines, Encoding.UTF8);
+			File.WriteAllLines(tscnFilepath,
+				tscnLines
+					.Where(line => line != "2remove")
+				, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false)); //no bom
 		}
 
 		Console.WriteLine($"done. processed {d.Files.Count()} .tscn files");

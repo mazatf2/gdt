@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.IO;
-using System.Linq;
+﻿using System.Linq;
 using gdt.router.misc;
 using Godot;
 
@@ -100,19 +98,6 @@ public partial class Bank : Node {
 		table?.QueueFree();
 		AddChild(container.node);
 		container.node.TraverseChildren<Node>(node => node.Owner = this);
-
-		var path = ProjectSettings.GlobalizePath(GetSceneFilePath()); //.tscn
-		var dir = new DirectoryInfo(path);
-		using var process = Process.Start(new ProcessStartInfo {
-			FileName = "tscn_cs_subscript_fix",
-			Arguments = dir.Parent.FullName,
-			RedirectStandardOutput = true,
-			RedirectStandardError = true,
-		});
-		GD.PrintS("tscn_cs_subscript_fix", process.StandardOutput.ReadToEnd());
-		GD.PrintS("tscn_cs_subscript_fix", process.StandardError.ReadToEnd());
-		process.Exited += (sender, args) => GD.PrintS("tscn_cs_subscript_fix exitcode:", process.ExitCode);
-		process.WaitForExit();
 
 		GetWindow().SizeChanged += () => {
 			if (Engine.IsEditorHint()) {

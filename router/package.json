@@ -1,6 +1,5 @@
 ﻿{
 	"scripts": {
-		"preexport": "tscn_cs_subscript_fix ./src/pages",
 		"export": "godot-mono --export-debug Windows_Desktop .export/gdt.router.exe"
 	}
 }
