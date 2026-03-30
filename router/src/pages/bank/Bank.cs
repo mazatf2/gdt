@@ -1,6 +1,9 @@
 ﻿using System.Linq;
+using gdt.router.el;
 using gdt.router.misc;
 using Godot;
+using Btn = gdt.router.el.Btn;
+using ToMainPageBtn = gdt.router.el.ToMainPageBtn;
 
 namespace gdt.router.pages.bank;
 
@@ -16,6 +19,7 @@ public partial class Bank : Node {
 			//LayoutMode = 2, //tscn horizontal = vertical = fill, vertical = expand 
 			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
 			SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+			VerticalAlignment = VerticalAlignment.Center,
 			Name = "fill",
 			Text = "fill",
 		};
@@ -27,7 +31,7 @@ public partial class Bank : Node {
 			return temp;
 		}
 
-		var activeLoans = new Btn { Text = "Active loans" };
+		var activeLoans = new Btn { Text = "Active loans", };
 		state.loanList.onChange += (old, loans) => {
 			activeLoans.Text = $"""
 			                    Active loans: 
@@ -40,23 +44,26 @@ public partial class Bank : Node {
 			Name = "content",
 			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
 			SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+			Alignment = BoxContainer.AlignmentMode.Center,
 		}, [
-			new Gui<FlowContainer>(new FlowContainer(),
-			[
-				new Btn {
-					Text = "Take loan",
-					onClick = btn => {
-						var loan = new Loan();
-						state.loanList.value.Add(loan);
-						state.money.value += loan.amount;
+			new Gui<FlowContainer>(new FlowContainer {
+					Alignment = FlowContainer.AlignmentMode.Center,
+				},
+				[
+					new Btn {
+						Text = "Take loan",
+						onClick = btn => {
+							var loan = new Loan();
+							state.loanList.value.Add(loan);
+							state.money.value += loan.amount;
+						},
 					},
-				},
-				new Btn {
-					Text = "Payback loan",
-					onClick = btn => { state.loanList.value.Add(new Loan()); }
-				},
-				activeLoans,
-			]).node,
+					new Btn {
+						Text = "Payback loan",
+						onClick = btn => { state.loanList.value.Add(new Loan()); },
+					},
+					activeLoans,
+				]).node,
 		]);
 
 		var headerRow = new Gui<HBoxContainer>(new HBoxContainer {
@@ -79,7 +86,7 @@ public partial class Bank : Node {
 			SizeFlagsVertical = Control.SizeFlags.ExpandFill,
 		}, [
 			fill(0),
-			new Gui<FlowContainer>(new FlowContainer(), [el.ToMainPageBtn()]).node,
+			new Gui<FlowContainer>(new FlowContainer(), [new ToMainPageBtn(),]).node,
 			fill(2),
 		]);
 
@@ -103,7 +110,7 @@ public partial class Bank : Node {
 			if (Engine.IsEditorHint()) {
 				var x = (int)ProjectSettings.Singleton.GetSetting("display/window/size/viewport_width");
 				var y = (int)ProjectSettings.Singleton.GetSetting("display/window/size/viewport_height");
-				container.node.Size = container.node.Size with { X = x, Y = y };
+				container.node.Size = container.node.Size with { X = x, Y = y, };
 				return;
 			}
 

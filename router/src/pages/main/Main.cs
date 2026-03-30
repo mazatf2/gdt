@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using gdt.router.misc;
 using Godot;
+using Btn = gdt.router.el.Btn;
+using NavButton = gdt.router.el.NavButton;
 
 namespace gdt.router.pages.main;
 
