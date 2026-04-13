@@ -5,11 +5,20 @@ namespace gdt.router.misc;
 
 public static class GodotExtensions {
 	//callbacks to self and children. callback(this), callback(this.children)
-	public static T TraverseChildren<T>(this Node node, Action<T> callback) where T : Node {
+	public static T Traverse<T>(this Node node, Action<T> callback) where T : Node {
 		callback(node as T);
 		foreach (var child in node.GetChildren()) {
+			child.Traverse(callback);
+		}
+
+		return (T)node;
+	}
+
+	public static T TraverseChildren<T>(this Node node, Action<T> callback) where T : Node {
+		foreach (var child in node.GetChildren()) {
+			callback(child as T);
 			child.TraverseChildren(callback);
-		};
+		}
 
 		return (T)node;
 	}

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://d155t42px2yo6"]
+
+[ext_resource type="Script" uid="uid://lintshrkni0w" path="res://src/pages/main/monthlyreport/MonthlyReport.cs" id="1_wmm81"]
+
+[node name="montly_report" type="Control" unique_id=148619016]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_wmm81")
+
+[node name="table" type="RichTextLabel" parent="." unique_id=1786168772]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+bbcode_enabled = true
+text = "[b]Monthly report[/b]
+
+[u]Expenses[/u]
+Buildings	200
+
+[u]Income[/u]
+Buildings	0"
+fit_content = true

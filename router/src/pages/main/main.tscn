@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://conxilt6g3nfa" path="res://src/pages/main/Main.cs" id="1_xefci"]
 [ext_resource type="Texture2D" uid="uid://bsotbwi6qwjmo" path="res://src/pages/main/background earth.svg" id="2_4d80n"]
+[ext_resource type="PackedScene" uid="uid://cpidj55ogyqyl" path="res://src/el/Footer.tscn" id="3_50bm3"]
+[ext_resource type="Script" uid="uid://lintshrkni0w" path="res://src/pages/main/monthlyreport/MonthlyReport.cs" id="3_nlqcl"]
 
 [node name="main" type="Node" unique_id=800627582]
 script = ExtResource("1_xefci")
@@ -27,69 +29,71 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="header" type="HBoxContainer" parent="row" unique_id=1446371658]
+[node name="main-header" type="HBoxContainer" parent="row" unique_id=1446371658]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="label" type="Label" parent="row/header" unique_id=2067387346]
+[node name="label" type="Label" parent="row/main-header" unique_id=2067387346]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "header"
 
-[node name="infoEl" type="HBoxContainer" parent="row/header" unique_id=1788459187]
+[node name="main-infoEl" type="HBoxContainer" parent="row/main-header" unique_id=1788459187]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="label3" type="Label" parent="row/header" unique_id=1368810349]
+[node name="label3" type="Label" parent="row/main-header" unique_id=1368810349]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "header"
 
-[node name="body" type="HBoxContainer" parent="row" unique_id=1274490998]
+[node name="main-body" type="HBoxContainer" parent="row" unique_id=1274490998]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="label" type="Label" parent="row/body" unique_id=1818108713]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "body"
-
-[node name="label2" type="Label" parent="row/body" unique_id=254247088]
-layout_mode = 2
-text = "body"
-
-[node name="label3" type="Label" parent="row/body" unique_id=357732343]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "body"
-
-[node name="footer" type="HBoxContainer" parent="row" unique_id=464406508]
+[node name="main-body-c0" type="Control" parent="row/main-body" unique_id=1710775363]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 6
-
-[node name="label" type="Label" parent="row/footer" unique_id=1157010746]
-layout_mode = 2
 size_flags_horizontal = 3
-text = "footer"
 
-[node name="boxContainer" type="VBoxContainer" parent="row/footer" unique_id=1536855089]
-layout_mode = 2
-alignment = 1
+[node name="mr-2007-05" type="Control" parent="row/main-body/main-body-c0" unique_id=1268399420]
+anchors_preset = 0
+script = ExtResource("3_nlqcl")
 
-[node name="nav" type="HBoxContainer" parent="row/footer/boxContainer" unique_id=1552031880]
+[node name="mr-2007-06" type="Control" parent="row/main-body/main-body-c0" unique_id=434411867]
+anchors_preset = 0
+rotation = 0.2617994
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2007-07" type="Control" parent="row/main-body/main-body-c0" unique_id=488169396]
+anchors_preset = 0
+rotation = 0.5235988
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2007-08" type="Control" parent="row/main-body/main-body-c0" unique_id=912551247]
+anchors_preset = 0
+rotation = 0.7853982
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2007-09" type="Control" parent="row/main-body/main-body-c0" unique_id=801680943]
+anchors_preset = 0
+rotation = 1.0471976
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2007-10" type="Control" parent="row/main-body/main-body-c0" unique_id=535027948]
+anchors_preset = 0
+script = ExtResource("3_nlqcl")
+
+[node name="main-body-c1" type="CenterContainer" parent="row/main-body" unique_id=402725271]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
 
-[node name="nav2" type="HBoxContainer" parent="row/footer/boxContainer" unique_id=1262547690]
+[node name="main-body-c2" type="CenterContainer" parent="row/main-body" unique_id=787269056]
 unique_name_in_owner = true
 layout_mode = 2
-alignment = 1
-
-[node name="label3" type="Label" parent="row/footer" unique_id=208229278]
-layout_mode = 2
 size_flags_horizontal = 3
-text = "footer"
+
+[node name="footer" parent="row" unique_id=705288570 instance=ExtResource("3_50bm3")]
+layout_mode = 2

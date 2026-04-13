@@ -1,19 +1,27 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using gdt.router.el;
 using gdt.router.misc;
 using Godot;
-using Btn = gdt.router.el.Btn;
-using ToMainPageBtn = gdt.router.el.ToMainPageBtn;
 
 namespace gdt.router.pages.bank;
 
 public record Loan {
 	public int amount = 1_000_000;
 	public string label = "Bank loan";
+	public int montlyPayback = 10_000;
+	public int left = 1_000_000;
 }
 
 [Tool]
 public partial class Bank : Node {
+	private List<Action> unsubList = [];
+
+	public override void _ExitTree() {
+		unsubList.ForEach(unsub => unsub());
+	}
+
 	public override void _EnterTree() {
 		var _temp = new Label {
 			//LayoutMode = 2, //tscn horizontal = vertical = fill, vertical = expand 
@@ -31,14 +39,16 @@ public partial class Bank : Node {
 			return temp;
 		}
 
-		var activeLoans = new Btn { Text = "Active loans", };
-		state.loanList.onChange += (old, loans) => {
+		var activeLoans = new Btn { Text = "Active loans", Name = "activeLoans", };
+		var unsub1 = state.loanList.onChange_subscribe(async (old, loans) => {
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 			activeLoans.Text = $"""
 			                    Active loans: 
 			                    {loans.Select(l => $"{l.label} -{l.label}") | (s => string.Join("\n", s))}
 			                    {loans.Count}
 			                    """;
-		};
+		});
+		unsubList.Add(unsub1);
 
 		var content = new Gui<VBoxContainer>(new VBoxContainer {
 			Name = "content",
@@ -48,10 +58,12 @@ public partial class Bank : Node {
 		}, [
 			new Gui<FlowContainer>(new FlowContainer {
 					Alignment = FlowContainer.AlignmentMode.Center,
+					Name = "content",
 				},
 				[
 					new Btn {
 						Text = "Take loan",
+						Name = "takeLoan",
 						onClick = btn => {
 							var loan = new Loan();
 							state.loanList.value.Add(loan);
@@ -60,34 +72,11 @@ public partial class Bank : Node {
 					},
 					new Btn {
 						Text = "Payback loan",
+						Name = "paybackLoan",
 						onClick = btn => { state.loanList.value.Add(new Loan()); },
 					},
 					activeLoans,
 				]).node,
-		]);
-
-		var headerRow = new Gui<HBoxContainer>(new HBoxContainer {
-			Name = "headerRow",
-			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-			SizeFlagsVertical = Control.SizeFlags.ExpandFill,
-		}, [
-			fill(0), fill(1), fill(2),
-		]);
-		var bodyRow = new Gui<HBoxContainer>(new HBoxContainer {
-			Name = "bodyRow",
-			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-			SizeFlagsVertical = Control.SizeFlags.ExpandFill,
-		}, [
-			fill(0), content.node, fill(2),
-		]);
-		var footerRow = new Gui<HBoxContainer>(new HBoxContainer {
-			Name = "footerRow",
-			SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
-			SizeFlagsVertical = Control.SizeFlags.ExpandFill,
-		}, [
-			fill(0),
-			new Gui<FlowContainer>(new FlowContainer(), [new ToMainPageBtn(),]).node,
-			fill(2),
 		]);
 
 		var container = new Gui<VBoxContainer>(new VBoxContainer {
@@ -98,23 +87,33 @@ public partial class Bank : Node {
 			SizeFlagsVertical = Control.SizeFlags.Fill,
 			Size = Engine.IsEditorHint() ? state.viewportVec2.value : GetWindow().Size,
 		}, [
-			headerRow.node, bodyRow.node, footerRow.node,
+			new Gui<HBoxContainer>(new HBoxContainer {
+				Name = "headerRow",
+				SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+				SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+			}, [
+				fill(0),
+				fill(1),
+				fill(2),
+			]).node,
+			new Gui<HBoxContainer>(new HBoxContainer {
+				Name = "bodyRow",
+				SizeFlagsHorizontal = Control.SizeFlags.ExpandFill,
+				SizeFlagsVertical = Control.SizeFlags.ExpandFill,
+			}, [
+				fill(0),
+				content.node,
+				fill(2),
+			]).node,
+			new Footer() { },
 		]);
-		var table = FindChild("table");
-		table?.Name += "_del";
-		table?.QueueFree();
-		AddChild(container.node);
-		container.node.TraverseChildren<Node>(node => node.Owner = this);
-
-		GetWindow().SizeChanged += () => {
-			if (Engine.IsEditorHint()) {
-				var x = (int)ProjectSettings.Singleton.GetSetting("display/window/size/viewport_width");
-				var y = (int)ProjectSettings.Singleton.GetSetting("display/window/size/viewport_height");
-				container.node.Size = container.node.Size with { X = x, Y = y, };
-				return;
-			}
-
-			container.node.Size = GetWindow().Size;
+		
+		Ready += () => {
+			var table = FindChild("table");
+			table?.Name += "_del";
+			table?.QueueFree();
+			AddChild(container.node);
+			container.node.Traverse<Node>(node => node.Owner = this);
 		};
 	}
 }

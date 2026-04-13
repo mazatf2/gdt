@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ch2eb5o8wwd07"]
+
+[ext_resource type="PackedScene" uid="uid://cpidj55ogyqyl" path="res://src/el/Footer.tscn" id="1_h1b80"]
+[ext_resource type="Script" uid="uid://d2d6gx2s3mafh" path="res://src/pages/buildings/Buildings.cs" id="1_wvrgc"]
+
+[node name="buildings" type="Control" unique_id=804003465]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvrgc")
+
+[node name="footer" parent="." unique_id=705288570 instance=ExtResource("1_h1b80")]
+layout_mode = 0

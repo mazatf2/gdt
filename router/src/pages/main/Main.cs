@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
+using gdt.router.el;
 using gdt.router.misc;
+using gdt.router.pages.main.monthlyreport;
 using Godot;
-using Btn = gdt.router.el.Btn;
-using NavButton = gdt.router.el.NavButton;
 
 namespace gdt.router.pages.main;
 
@@ -12,45 +12,49 @@ public partial class Main : Node {
 	private List<Action> unsubList = [];
 
 	public override void _Ready() {
-		var nav = GetNode("%nav");
-		var nav2 = GetNode("%nav2");
-		var infoEl = GetNode("%infoEl");
-		var header = GetNode("%header");
-		var body = GetNode("%body");
-		var footer = GetNode("%footer");
-
-		List<Page> order = [pagesData.bank, pagesData.warehouse,];
-
-		foreach (var page in order) {
-			var btn = new NavButton {
-				Text = page.label,
-				Name = page.gdName + "Btn",
-				onClick = btn => state.current_page.value = btn.page,
-				page = page,
-			};
-			nav.AddChild(btn);
-		}
+		//var nav = GetNode("%nav");
+		//var nav2 = GetNode("%nav2");
+		var infoEl = GetNode("%main-infoEl");
+		//var header = GetNode("%header");
+		var body = GetNode("%main-body");
+		//var footer = GetNode("%footer");
 
 		var info = new Label { Name = "info", };
 		infoEl.AddChild(info);
 
-		void updateInfo() {
+		async void updateInfo() {
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
 			var date = state.date.value;
 			info.Text = $"""
-			             Day {date.Day} Month {date.Month} Year {date.Year}
-			             {state.money} €
-			             """;
+						Day {date.Day} Month {date.Month} Year {date.Year}
+						{state.money} €
+						""";
 		}
 
 		unsubList = [
 			state.date.onChange_subscribe((_, _) => updateInfo()),
 			state.money.onChange_subscribe((_, _) => updateInfo()),
 		];
-		var nextDay = new Btn {
-			Text = "Next day",
-			onClick = _ => state.date.value = state.date.value.AddDays(1),
-		};
-		nav2.AddChild(nextDay);
+
+		var container = GetNodeOrNull("%main-body-c0");
+		state.date.onChange_subscribe_node(this, async (old, val) => {
+			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+			if (val.Day == 1) {
+				var childs = container.GetChildCount();
+				if (childs > 4) {
+					container.GetChild(0).QueueFree();
+				}
+
+				var monthKey = val.Date.ToString("yyyy-MM");
+				var n = new MonthlyReport {
+					Name = "mr-" + monthKey,
+					RotationDegrees = (val.Date.Month % 5) * 15,
+				};
+				container.AddChild(n);
+				n.Owner = this;
+			}
+		});
 	}
 
 	public override void _ExitTree() {

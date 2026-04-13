@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cpidj55ogyqyl"]
+
+[ext_resource type="Script" uid="uid://bhw18as5662hb" path="res://src/el/Footer.cs" id="1_dc3w5"]
+[ext_resource type="Script" uid="uid://b47aq1pj1086q" path="res://src/el/Fill.cs" id="2_2v67o"]
+
+[node name="footer" type="HBoxContainer" unique_id=705288570]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_dc3w5")
+metadata/_custom_type_script = "uid://bhw18as5662hb"
+
+[node name="fill" type="Label" parent="." unique_id=246556265]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill"
+vertical_alignment = 1
+script = ExtResource("2_2v67o")
+
+[node name="content" type="HBoxContainer" parent="." unique_id=1643533347]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="fill2" type="Label" parent="." unique_id=1662350989]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "fill"
+vertical_alignment = 1
+script = ExtResource("2_2v67o")

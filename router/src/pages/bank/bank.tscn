@@ -1,98 +1,132 @@
 [gd_scene format=3 uid="uid://bovflgrbotkeq"]
 
 [ext_resource type="Script" uid="uid://fhp442nbsvhc" path="res://src/pages/bank/Bank.cs" id="1_0uher"]
+[ext_resource type="Script" uid="uid://cpmyl1ew7s2tu" path="res://src/el/Btn.cs" id="2_f0hsm"]
+[ext_resource type="Script" uid="uid://bhw18as5662hb" path="res://src/el/Footer.cs" id="3_vy5fk"]
+[ext_resource type="Script" uid="uid://b47aq1pj1086q" path="res://src/el/Fill.cs" id="4_0bfy0"]
+[ext_resource type="Script" uid="uid://lo7824g5rdhc" path="res://src/el/NavButton.cs" id="5_fdai2"]
 
 [node name="bank" type="Node" unique_id=2069487096]
 script = ExtResource("1_0uher")
 
-[node name="table" type="VBoxContainer" parent="." unique_id=1398094606]
+[node name="table" type="VBoxContainer" parent="." unique_id=1300110792]
 offset_right = 1152.0
 offset_bottom = 648.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="headerRow" type="HBoxContainer" parent="table" unique_id=89741316]
+[node name="headerRow" type="HBoxContainer" parent="table" unique_id=633052711]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="fill0" type="Label" parent="table/headerRow" unique_id=208757744]
+[node name="fill0" type="Label" parent="table/headerRow" unique_id=1410885002]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "fill0"
+vertical_alignment = 1
 
-[node name="fill1" type="Label" parent="table/headerRow" unique_id=179908843]
+[node name="fill1" type="Label" parent="table/headerRow" unique_id=1266157482]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "fill1"
+vertical_alignment = 1
 
-[node name="fill2" type="Label" parent="table/headerRow" unique_id=1120306502]
+[node name="fill2" type="Label" parent="table/headerRow" unique_id=296277141]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "fill2"
+vertical_alignment = 1
 
-[node name="bodyRow" type="HBoxContainer" parent="table" unique_id=1072716968]
+[node name="bodyRow" type="HBoxContainer" parent="table" unique_id=281346084]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="fill0" type="Label" parent="table/bodyRow" unique_id=1679870224]
+[node name="fill0" type="Label" parent="table/bodyRow" unique_id=796789096]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "fill0"
+vertical_alignment = 1
 
-[node name="content" type="VBoxContainer" parent="table/bodyRow" unique_id=933889846]
+[node name="content" type="VBoxContainer" parent="table/bodyRow" unique_id=1362967585]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+alignment = 1
 
-[node name="@FlowContainer@19281" type="FlowContainer" parent="table/bodyRow/content" unique_id=1877741179]
+[node name="content" type="FlowContainer" parent="table/bodyRow/content" unique_id=1786970562]
 layout_mode = 2
+alignment = 1
 
-[node name="@Button@19278" type="Button" parent="table/bodyRow/content/@FlowContainer@19281" unique_id=655914143]
+[node name="takeLoan" type="Button" parent="table/bodyRow/content/content" unique_id=166995011]
 layout_mode = 2
 text = "Take loan"
+script = ExtResource("2_f0hsm")
 
-[node name="@Button@19279" type="Button" parent="table/bodyRow/content/@FlowContainer@19281" unique_id=413819991]
+[node name="paybackLoan" type="Button" parent="table/bodyRow/content/content" unique_id=952432268]
 layout_mode = 2
 text = "Payback loan"
+script = ExtResource("2_f0hsm")
 
-[node name="@Button@19280" type="Button" parent="table/bodyRow/content/@FlowContainer@19281" unique_id=1139189643]
+[node name="activeLoans" type="Button" parent="table/bodyRow/content/content" unique_id=257416817]
 layout_mode = 2
 text = "Active loans: 
 
 0"
+script = ExtResource("2_f0hsm")
 
-[node name="fill2" type="Label" parent="table/bodyRow" unique_id=2043990938]
+[node name="fill2" type="Label" parent="table/bodyRow" unique_id=838262738]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "fill2"
+vertical_alignment = 1
 
-[node name="footerRow" type="HBoxContainer" parent="table" unique_id=1486943978]
+[node name="footer" type="HBoxContainer" parent="table" unique_id=2009621997]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("3_vy5fk")
 
-[node name="fill0" type="Label" parent="table/footerRow" unique_id=1847214735]
+[node name="fill" type="Label" parent="table/footer" unique_id=105415117]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "fill0"
+text = "fill"
+vertical_alignment = 1
+script = ExtResource("4_0bfy0")
 
-[node name="@FlowContainer@19282" type="FlowContainer" parent="table/footerRow" unique_id=397114422]
+[node name="content" type="HBoxContainer" parent="table/footer" unique_id=669376236]
 layout_mode = 2
+size_flags_vertical = 4
 
-[node name="mainBtn" type="Button" parent="table/footerRow/@FlowContainer@19282" unique_id=206313521]
+[node name="warehouseBtn" type="Button" parent="table/footer/content" unique_id=1450845288]
 layout_mode = 2
-text = "Back"
+keep_pressed_outside = true
+text = "Warehouse"
+script = ExtResource("5_fdai2")
 
-[node name="fill2" type="Label" parent="table/footerRow" unique_id=771443850]
+[node name="bankBtn" type="Button" parent="table/footer/content" unique_id=1938840527]
+layout_mode = 2
+keep_pressed_outside = true
+text = "Bank"
+script = ExtResource("5_fdai2")
+
+[node name="mainBtn" type="Button" parent="table/footer/content" unique_id=400276403]
+layout_mode = 2
+keep_pressed_outside = true
+text = "Main111111"
+script = ExtResource("5_fdai2")
+
+[node name="fill2" type="Label" parent="table/footer" unique_id=617369465]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-text = "fill2"
+text = "fill"
+vertical_alignment = 1
+script = ExtResource("4_0bfy0")

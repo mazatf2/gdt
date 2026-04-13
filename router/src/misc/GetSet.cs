@@ -12,6 +12,10 @@ public class GetSet<T>(T value) {
 	public T value {
 		get => _value;
 		set {
+			if (Equals(_value, value)) {
+				return;
+			}
+
 			_onChange?.Invoke(_value, value);
 			_value = value;
 		}
@@ -30,6 +34,13 @@ public class GetSet<T>(T value) {
 		_onChange += callback;
 		return () => _onChange -= callback;
 	}
+
+	public void onChange_subscribe_node(Godot.Node node, onChangeType callback) {
+		callback(_value, _value);
+		_onChange += callback;
+		node.TreeExiting += () => _onChange -= callback;
+	}
+
 
 	public static GetSet<T> operator /(GetSet<T> a, T b) {
 		dynamic valA = a.value;

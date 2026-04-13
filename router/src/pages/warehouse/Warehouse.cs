@@ -1,11 +1,11 @@
-﻿using Godot;
-using ToMainPageBtn = gdt.router.el.ToMainPageBtn;
+﻿using gdt.router.el;
+using Godot;
 
 namespace gdt.router.pages.warehouse;
 
 public partial class Warehouse : Node {
 	public override void _Ready() {
-		var b = new ToMainPageBtn();
+		var b = new Footer();
 		AddChild(b);
 	}
 }
