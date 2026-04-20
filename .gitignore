@@ -1,5 +1,4 @@
-﻿# User-specific stuff
-**/.idea
+﻿**/.idea
 
 **/*.user
 
@@ -10,4 +9,5 @@
 
 **/artifacts
 **/bin
+**/obj
 **/nupkg

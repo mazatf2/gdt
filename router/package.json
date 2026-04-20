@@ -1,5 +1,6 @@
 ﻿{
 	"scripts": {
-		"export": "godot-mono --export-debug Windows_Desktop .export/gdt.router.exe"
+		"gdt.router-editor": "godot-mono -e",
+		"gdt.router-export": "godot-mono --export-debug Windows_Desktop .export/gdt.router.exe"
 	}
 }

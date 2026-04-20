@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace gdt.router.misc;
+﻿namespace gdt.shared;
 
 public class GetSet<T>(T value) {
 	public delegate void onChangeType(T old, T val);

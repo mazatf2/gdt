@@ -2,7 +2,12 @@
 	<Folder Name="/router/">
 		<Project Path="router/gdt.router.csproj" />
 	</Folder>
+	<Folder Name="/tablet/">
+		<Project Path="tablet/gdt.tablet.csproj" />
+	</Folder>
 	<Folder Name="/tools/">
-		<File Path="tools/package.json" />
+	</Folder>
+	<Folder Name="/shared/">
+		<Project Path="shared/gdt.shared.csproj" />
 	</Folder>
 </Solution>

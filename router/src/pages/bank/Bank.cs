@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using gdt.router.el;
 using gdt.router.misc;
+using gdt.shared;
 using Godot;
 
 namespace gdt.router.pages.bank;
@@ -43,10 +44,10 @@ public partial class Bank : Node {
 		var unsub1 = state.loanList.onChange_subscribe(async (old, loans) => {
 			await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 			activeLoans.Text = $"""
-			                    Active loans: 
-			                    {loans.Select(l => $"{l.label} -{l.label}") | (s => string.Join("\n", s))}
-			                    {loans.Count}
-			                    """;
+								Active loans: 
+								{loans.Select(l => $"{l.label} -{l.label}") | (s => string.Join("\n", s))}
+								{loans.Count}
+								""";
 		});
 		unsubList.Add(unsub1);
 
@@ -107,7 +108,7 @@ public partial class Bank : Node {
 			]).node,
 			new Footer() { },
 		]);
-		
+
 		Ready += () => {
 			var table = FindChild("table");
 			table?.Name += "_del";
