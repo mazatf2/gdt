@@ -1,5 +1,0 @@
-﻿{
-	"scripts": {
-		"gdt.tablet-editor": "godot-mono -e"
-	}
-}

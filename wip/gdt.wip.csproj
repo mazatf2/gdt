@@ -7,7 +7,4 @@
 	<ItemGroup>
 		<ProjectReference Include="../shared/gdt.shared.csproj"/>
 	</ItemGroup>
-	<ItemGroup>
-	  <Content Include="package.json" />
-	</ItemGroup>
 </Project>

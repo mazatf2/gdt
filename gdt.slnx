@@ -2,10 +2,12 @@
 	<Folder Name="/router/">
 		<Project Path="router/gdt.router.csproj" />
 	</Folder>
-	<Folder Name="/tablet/">
-		<Project Path="tablet/gdt.tablet.csproj" />
+	<Folder Name="/wip/">
+		<Project Path="wip/gdt.wip.csproj" />
 	</Folder>
 	<Folder Name="/tools/">
+		<File Path="tools/parsesample/parsesample.cs" />
+		<File Path="tools/tscn_cs_subscript_fix/tscn_cs_subscript_fix.cs" />
 	</Folder>
 	<Folder Name="/shared/">
 		<Project Path="shared/gdt.shared.csproj" />

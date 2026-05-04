@@ -1,0 +1,5 @@
+﻿{
+	"scripts": {
+		"gdt.wip-editor": "godot-mono -e"
+	}
+}

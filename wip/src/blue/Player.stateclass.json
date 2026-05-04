@@ -1,0 +1,282 @@
+{
+	"className": "Player",
+	"classExtends": [],
+	"classText": "",
+	"isStateClass": false,
+	"classLoc": {
+		"Start": 5311,
+		"End": 6894,
+		"Length": 1583,
+		"IsEmpty": false
+	},
+	"output": {
+		"Idle": {
+			"methods": [
+				{
+					"name": "_EnterTree",
+					"location": {
+						"Start": 1941,
+						"End": 2023,
+						"Length": 82,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void _EnterTree() {\n\t\tStore.idle.value = this;\n\t\tName = \u0022idle\u0022;\n\t}\n"
+				},
+				{
+					"name": "PhysicsProcess",
+					"location": {
+						"Start": 2026,
+						"End": 2275,
+						"Length": 249,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void PhysicsProcess(float delta) {\n\t\tif (Input.IsActionPressed(\u0022ui_up\u0022)) {\n\t\t\tChangeState(Connections.Jump);\n\t\t}\n\n\t\tif (Input.IsActionPressed(\u0022ui_left\u0022) || Input.IsActionPressed(\u0022ui_right\u0022)) {\n\t\t\tChangeState(Connections.Walk);\n\t\t}\n\t}\n"
+				}
+			],
+			"properties": [
+				{
+					"name": "StateId",
+					"location": {
+						"Start": 1675,
+						"End": 1735,
+						"Length": 60,
+						"IsEmpty": false
+					},
+					"src": "\tpublic override StateEnum StateId { get; } = StateEnum.Idle;\n"
+				},
+				{
+					"name": "Connections",
+					"location": {
+						"Start": 1738,
+						"End": 1830,
+						"Length": 92,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override dynamic Connections { get; } = new {\n\t\tStateEnum.Jump,\n\t\tStateEnum.Walk,\n\t};\n"
+				},
+				{
+					"name": "ConnectionList",
+					"location": {
+						"Start": 1833,
+						"End": 1938,
+						"Length": 105,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override List\u003CStateEnum\u003E ConnectionList { get; init; } = [\n\t\tStateEnum.Jump,\n\t\tStateEnum.Walk,\n\t];\n"
+				}
+			],
+			"fields": []
+		},
+		"Jump": {
+			"methods": [
+				{
+					"name": "_EnterTree",
+					"location": {
+						"Start": 2551,
+						"End": 2633,
+						"Length": 82,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void _EnterTree() {\n\t\tStore.jump.value = this;\n\t\tName = \u0022jump\u0022;\n\t}\n"
+				},
+				{
+					"name": "CanStart",
+					"location": {
+						"Start": 2636,
+						"End": 2713,
+						"Length": 77,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override bool CanStart() {\n\t\treturn Store.player.value.IsOnFloor();\n\t}\n"
+				},
+				{
+					"name": "Start",
+					"location": {
+						"Start": 2716,
+						"End": 2840,
+						"Length": 124,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void Start() {\n\t\tStore.player.value.Velocity = Store.player.value.Velocity with { Y = Store._jumpSpeed };\n\t}\n"
+				},
+				{
+					"name": "PhysicsProcess",
+					"location": {
+						"Start": 2843,
+						"End": 2979,
+						"Length": 136,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void PhysicsProcess(float delta) {\n\t\tif (Store.player.value.IsOnFloor()) {\n\t\t\tthis.ChangeState(Connections.Idle);\n\t\t}\n\t}\n"
+				}
+			],
+			"properties": [
+				{
+					"name": "StateId",
+					"location": {
+						"Start": 2321,
+						"End": 2381,
+						"Length": 60,
+						"IsEmpty": false
+					},
+					"src": "\tpublic override StateEnum StateId { get; } = StateEnum.Jump;\n"
+				},
+				{
+					"name": "Connections",
+					"location": {
+						"Start": 2384,
+						"End": 2458,
+						"Length": 74,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override dynamic Connections { get; } = new {\n\t\tStateEnum.Idle,\n\t};\n"
+				},
+				{
+					"name": "ConnectionList",
+					"location": {
+						"Start": 2461,
+						"End": 2548,
+						"Length": 87,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override List\u003CStateEnum\u003E ConnectionList { get; init; } = [\n\t\tStateEnum.Idle,\n\t];\n"
+				}
+			],
+			"fields": []
+		},
+		"Walk": {
+			"methods": [
+				{
+					"name": "_EnterTree",
+					"location": {
+						"Start": 3325,
+						"End": 3407,
+						"Length": 82,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void _EnterTree() {\n\t\tStore.walk.value = this;\n\t\tName = \u0022walk\u0022;\n\t}\n"
+				},
+				{
+					"name": "CanStart",
+					"location": {
+						"Start": 3410,
+						"End": 3534,
+						"Length": 124,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override bool CanStart() {\n\t\treturn Input.IsActionJustPressed(\u0022ui_left\u0022) || Input.IsActionJustPressed(\u0022ui_right\u0022);\n\t}\n"
+				},
+				{
+					"name": "PhysicsProcess",
+					"location": {
+						"Start": 3537,
+						"End": 3793,
+						"Length": 256,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void PhysicsProcess(float delta) {\n\t\tvar dir = Input.GetAxis(\u0022ui_left\u0022, \u0022ui_right\u0022);\n\t\tStore.player.value.Velocity = Store.player.value.Velocity with { X = dir * Store._walkSpeed };\n\t\tif (dir == 0) {\n\t\t\tChangeState(Connections.Idle);\n\t\t}\n\t}\n"
+				}
+			],
+			"properties": [
+				{
+					"name": "StateId",
+					"location": {
+						"Start": 3025,
+						"End": 3085,
+						"Length": 60,
+						"IsEmpty": false
+					},
+					"src": "\tpublic override StateEnum StateId { get; } = StateEnum.Walk;\n"
+				},
+				{
+					"name": "Connections",
+					"location": {
+						"Start": 3088,
+						"End": 3197,
+						"Length": 109,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override dynamic Connections { get; } = new {\n\t\tStateEnum.Idle,\n\t\tStateEnum.Jump,\n\t\tStateEnum.Run,\n\t};\n"
+				},
+				{
+					"name": "ConnectionList",
+					"location": {
+						"Start": 3200,
+						"End": 3322,
+						"Length": 122,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override List\u003CStateEnum\u003E ConnectionList { get; init; } = [\n\t\tStateEnum.Idle,\n\t\tStateEnum.Jump,\n\t\tStateEnum.Run,\n\t];\n"
+				}
+			],
+			"fields": []
+		},
+		"Run": {
+			"methods": [
+				{
+					"name": "_EnterTree",
+					"location": {
+						"Start": 4139,
+						"End": 4219,
+						"Length": 80,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void _EnterTree() {\n\t\tStore.run.value = this;\n\t\tName = \u0022run\u0022;\n\t}\n"
+				},
+				{
+					"name": "CanStart",
+					"location": {
+						"Start": 4222,
+						"End": 4372,
+						"Length": 150,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override bool CanStart() {\n\t\treturn Store.player.value.IsOnFloor() \u0026\u0026 Input.IsActionPressed(\u0022ui_left\u0022) || Input.IsActionPressed(\u0022ui_right\u0022);\n\t}\n"
+				},
+				{
+					"name": "PhysicsProcess",
+					"location": {
+						"Start": 4375,
+						"End": 4574,
+						"Length": 199,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override void PhysicsProcess(float delta) {\n\t\tvar dir = Input.GetAxis(\u0022ui_left\u0022, \u0022ui_right\u0022);\n\t\tStore.player.value.Velocity = Store.player.value.Velocity with { X = dir * Store._runSpeed };\n\t}\n"
+				}
+			],
+			"properties": [
+				{
+					"name": "StateId",
+					"location": {
+						"Start": 3838,
+						"End": 3897,
+						"Length": 59,
+						"IsEmpty": false
+					},
+					"src": "\tpublic override StateEnum StateId { get; } = StateEnum.Run;\n"
+				},
+				{
+					"name": "Connections",
+					"location": {
+						"Start": 3900,
+						"End": 4010,
+						"Length": 110,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override dynamic Connections { get; } = new {\n\t\tStateEnum.Idle,\n\t\tStateEnum.Jump,\n\t\tStateEnum.Walk,\n\t};\n"
+				},
+				{
+					"name": "ConnectionList",
+					"location": {
+						"Start": 4013,
+						"End": 4136,
+						"Length": 123,
+						"IsEmpty": false
+					},
+					"src": "\n\tpublic override List\u003CStateEnum\u003E ConnectionList { get; init; } = [\n\t\tStateEnum.Idle,\n\t\tStateEnum.Jump,\n\t\tStateEnum.Walk,\n\t];\n"
+				}
+			],
+			"fields": []
+		}
+	}
+}

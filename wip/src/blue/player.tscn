@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://vg3uuc20f32a"]
+
+[ext_resource type="Script" uid="uid://bv5li3cqu121" path="res://src/blue/Player.cs" id="1_2rqmt"]
+[ext_resource type="Texture2D" uid="uid://c7vtydv720m1y" path="res://src/blue/player.svg" id="2_wwtte"]
+
+[node name="Player" type="CharacterBody2D" unique_id=713014861]
+script = ExtResource("1_2rqmt")
+
+[node name="player" type="Sprite2D" parent="." unique_id=1566747401]
+texture = ExtResource("2_wwtte")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=62588787]
+polygon = PackedVector2Array(-64, -64, -64, 64, 64, 64, 64, -64)
+
+[node name="tablet-blue-player-info" type="Label" parent="." unique_id=1236991909]
+unique_name_in_owner = true
+offset_left = 72.0
+offset_top = -187.0
+offset_right = 433.0
+offset_bottom = -61.0

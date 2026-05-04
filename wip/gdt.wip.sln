@@ -1,6 +1,6 @@
 ﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gdt.tablet", "gdt.tablet.csproj", "{D936FA16-36FE-456D-99BE-0A2D2B150384}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gdt.wip", "gdt.wip.csproj", "{D936FA16-36FE-456D-99BE-0A2D2B150384}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

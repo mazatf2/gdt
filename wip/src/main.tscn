@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://bikn8pd7qpt5h" path="res://src/Main.cs" id="1_eewff"]
 
+[sub_resource type="Curve" id="Curve_eewff"]
+
 [node name="main" type="Control" unique_id=1639007930]
 layout_mode = 3
 anchors_preset = 15
@@ -9,28 +11,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
-
-[node name="main" type="Control" parent="." unique_id=725824067]
-custom_minimum_size = Vector2(512, 512)
-anchors_preset = 0
-offset_right = 512.0
-offset_bottom = 512.0
-script = ExtResource("1_eewff")
-metadata/_custom_type_script = "uid://bikn8pd7qpt5h"
-metadata/_edit_lock_ = true
-
-[node name="tablet-main-debug" type="RichTextLabel" parent="." unique_id=1501919070]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 0
-offset_left = 233.0
-offset_top = 2.0
-offset_right = 879.0
-offset_bottom = 524.0
-text = "vsync Enabled
-hz 199,984
-max fps 0"
 metadata/_edit_lock_ = true
 
 [node name="tablet-main-info" type="RichTextLabel" parent="." unique_id=265353715]
@@ -59,4 +39,37 @@ text = "0.00000 [0.000, 0.000] False 0
 0.00000 [0.000, 0.000] False 0
 0.00000 [0.000, 0.000] False 0
 "
+metadata/_edit_lock_ = true
+
+[node name="main" type="Control" parent="." unique_id=725824067]
+custom_minimum_size = Vector2(512, 512)
+anchors_preset = 0
+offset_right = 512.0
+offset_bottom = 512.0
+script = ExtResource("1_eewff")
+metadata/_custom_type_script = "uid://bikn8pd7qpt5h"
+metadata/_edit_lock_ = true
+
+[node name="@Line2D@38279" type="Line2D" parent="main" unique_id=1133664404]
+width = 3.0
+width_curve = SubResource("Curve_eewff")
+default_color = Color(0, 0, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+round_precision = 3
+
+[node name="tablet-main-debug" type="RichTextLabel" parent="." unique_id=1501919070]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 0
+offset_left = 233.0
+offset_top = 2.0
+offset_right = 471.0
+offset_bottom = 170.0
+text = "vsync Enabled
+hz 199,984
+max fps 0
+145 7.8
+State { canDraw = False }"
 metadata/_edit_lock_ = true

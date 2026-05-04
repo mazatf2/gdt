@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Godot;
 using gdt.shared;
+using Godot;
 
-namespace gdt.tablet;
+namespace gdt.wip;
+
+record State {
+	public bool canDraw = true;
+}
 
 //https://github.com/godotengine/godot-demo-projects/tree/f54facb876d80f570bdb774e40e1a5b2e7b4570b/misc/graphics_tablet_input
 [Tool, GlobalClass,]
@@ -27,18 +31,38 @@ public partial class Main : Godot.Control {
 	private RichTextLabel info;
 	private RichTextLabel debug;
 
+	private State state = new();
+
 	public override void _Ready() {
 		info = GetNode<RichTextLabel>("%tablet-main-info");
 		debug = GetNode<RichTextLabel>("%tablet-main-debug");
+		debug.GuiInput += @event => {
+			if (@event is InputEventMouseButton ev) {
+				if (ev.ButtonIndex == MouseButton.Left) {
+					DisplayServer.WindowSetVsyncMode(DisplayServer.VSyncMode.Disabled);
+				}
+
+				if (ev.ButtonIndex == MouseButton.Right) {
+					DisplayServer.WindowSetVsyncMode(DisplayServer.VSyncMode.Enabled);
+				}
+			}
+		};
+
+		var nodeInspector = EditorInterface.Singleton?.GetInspector();
+		nodeInspector?.EditedObjectChanged += () => {
+			var nodes = EditorInterface.Singleton.GetSelection().GetTopSelectedNodes();
+			if (nodes.Count == 1 && nodes[0] == this) {
+				state.canDraw = true;
+			}
+			else {
+				state.canDraw = false;
+			}
+		};
+
+		this.TraverseChildren<Node>(n => n.QueueFree());
 
 		Input.UseAccumulatedInput = true;
 		start_stroke();
-
-		debug.Text = $"""
-					vsync {DisplayServer.WindowGetVsyncMode()}
-					hz {DisplayServer.ScreenGetRefreshRate()}
-					max fps {Engine.MaxFps}
-					""";
 	}
 
 	public void start_stroke() {
@@ -52,8 +76,15 @@ public partial class Main : Godot.Control {
 			Width = line_width,
 			WidthCurve = curve,
 		};
-		AddChild(new_stroke);
-		new_stroke.Owner = this;
+
+		CallDeferred(wip.Main.MethodName.AddChild, new_stroke);
+		if (Engine.IsEditorHint()) {
+			new_stroke.CallDeferred(Node.MethodName.SetOwner, EditorInterface.Singleton.GetEditedSceneRoot());
+		}
+		else {
+			new_stroke.CallDeferred(Node.MethodName.SetOwner, this);
+		}
+
 		stroke_line2d = new_stroke;
 
 		width_curve = curve;
@@ -62,6 +93,8 @@ public partial class Main : Godot.Control {
 
 	public override void _Input(InputEvent @event) {
 		if (stroke_line2d == null) { return; }
+
+		if (state.canDraw == false) { return; }
 
 		if (@event is InputEventMouseMotion ev) {
 			string pressure = ev.Pressure.ToString("0.00000", CultureInfo.InvariantCulture);
@@ -79,7 +112,7 @@ public partial class Main : Godot.Control {
 				info.Text = string.Join("\n", lines);
 			}
 
-			if (ev.Pressure > 0 && stroke_line2d.Points.Length > 1) {
+			if (ev.Pressure == 0 && stroke_line2d.Points.Length > 1) {
 				start_stroke();
 			}
 
@@ -101,5 +134,15 @@ public partial class Main : Godot.Control {
 				event_tilt = ev.Tilt;
 			}
 		}
+	}
+
+	public override void _Process(double delta) {
+		debug.Text = $"""
+					vsync {DisplayServer.WindowGetVsyncMode()}
+					hz {DisplayServer.ScreenGetRefreshRate()}
+					max fps {Engine.MaxFps}
+					{Engine.GetFramesPerSecond()} {(delta * 1000).ToString("0.0", CultureInfo.InvariantCulture)}
+					{state}
+					""";
 	}
 }

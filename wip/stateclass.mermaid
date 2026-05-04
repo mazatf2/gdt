@@ -1,0 +1,15 @@
+﻿stateDiagram-v2
+	Idle
+	Jump
+	Walk
+	Run
+
+	Idle --> Jump
+	Idle --> Walk
+	Jump --> Idle
+	Walk --> Idle
+	Walk --> Jump
+	Walk --> Run
+	Run --> Idle
+	Run --> Jump
+	Run --> Walk
