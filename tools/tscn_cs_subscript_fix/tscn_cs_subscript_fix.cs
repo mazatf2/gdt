@@ -2,8 +2,8 @@
 #:sdk Microsoft.NET.Sdk
 #:package Microsoft.Extensions.FileSystemGlobbing@10.0.5
 #:property OutputPath=./bin
-#:property ToolCommandName=tscn_cs_subscript_fix
 #:property PackageOutputPath=./nupkg
+#:property ToolCommandName=tscn_cs_subscript_fix
 
 using System.Text;
 using Microsoft.Extensions.FileSystemGlobbing;

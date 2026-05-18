@@ -1,12 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using gdt.shared;
 using Godot;
 
 namespace gdt.wip.blue;
 
 public enum StateEnum {
+	Nop,
+
 	Idle,
 	Jump,
 	Walk,
@@ -20,63 +23,6 @@ static class States_index_by {
 		[StateEnum.Walk] = Store.walk.value,
 		[StateEnum.Run] = Store.run.value,
 	};
-}
-
-public partial interface IStateMethods {
-	public StateEnum StateId { get; }
-	public dynamic Connections { get; }
-
-	public enum ConnectionsEnum;
-
-	public List<StateEnum> ConnectionList { get; }
-	public bool CanStart();
-	public void Start();
-	public void Stop();
-
-	public void PhysicsProcess(float delta);
-}
-
-public abstract partial class StateClass : Node, IStateMethods {
-	public virtual StateEnum StateId { get; }
-
-	/*
-public override dynamic Connections { get; } = new {
-	StateEnum.Next,
-	StateEnum.End,
-};
-	*/
-	public abstract dynamic Connections { get; }
-
-	//public enum ConnectionsEnum;
-
-	public abstract List<StateEnum> ConnectionList { get; init; }
-
-	public virtual bool CanStart() {
-		return true;
-	}
-
-	public virtual void Start() {
-	}
-
-	public virtual void Stop() {
-	}
-
-	public virtual void PhysicsProcess(float delta) {
-		//TODO return statdeId. 0: no change etc or ownid for no change vs force change self(etc loop)
-	}
-
-	public virtual bool ChangeState(StateEnum _to) {
-		var to = States_index_by.data[_to];
-
-		var isValid = to.CanStart();
-		if (!isValid) { return false; }
-
-		Stop();
-		to.Start();
-		Store.currentState.value = to;
-
-		return true;
-	}
 }
 
 public partial class Idle : StateClass {
@@ -97,14 +43,16 @@ public partial class Idle : StateClass {
 		Name = "idle";
 	}
 
-	public override void PhysicsProcess(float delta) {
+	public override StateEnum PhysicsProcess(float delta) {
 		if (Input.IsActionPressed("ui_up")) {
-			ChangeState(Connections.Jump);
+			return ChangeState(Connections.Jump);
 		}
 
 		if (Input.IsActionPressed("ui_left") || Input.IsActionPressed("ui_right")) {
-			ChangeState(Connections.Walk);
+			return ChangeState(Connections.Walk);
 		}
+
+		return StateEnum.Nop;
 	}
 }
 
@@ -132,10 +80,12 @@ public partial class Jump : StateClass {
 		Store.player.value.Velocity = Store.player.value.Velocity with { Y = Store._jumpSpeed };
 	}
 
-	public override void PhysicsProcess(float delta) {
+	public override StateEnum PhysicsProcess(float delta) {
 		if (Store.player.value.IsOnFloor()) {
-			this.ChangeState(Connections.Idle);
+			return ChangeState(Connections.Idle);
 		}
+
+		return StateEnum.Nop;
 	}
 }
 
@@ -163,12 +113,14 @@ public partial class Walk : StateClass {
 		return Input.IsActionJustPressed("ui_left") || Input.IsActionJustPressed("ui_right");
 	}
 
-	public override void PhysicsProcess(float delta) {
+	public override StateEnum PhysicsProcess(float delta) {
 		var dir = Input.GetAxis("ui_left", "ui_right");
 		Store.player.value.Velocity = Store.player.value.Velocity with { X = dir * Store._walkSpeed };
 		if (dir == 0) {
-			ChangeState(Connections.Idle);
+			return ChangeState(Connections.Idle);
 		}
+
+		return StateEnum.Nop;
 	}
 }
 
@@ -196,9 +148,11 @@ public partial class Run : StateClass {
 		return Store.player.value.IsOnFloor() && Input.IsActionPressed("ui_left") || Input.IsActionPressed("ui_right");
 	}
 
-	public override void PhysicsProcess(float delta) {
+	public override StateEnum PhysicsProcess(float delta) {
 		var dir = Input.GetAxis("ui_left", "ui_right");
 		Store.player.value.Velocity = Store.player.value.Velocity with { X = dir * Store._runSpeed };
+
+		return StateEnum.Nop;
 	}
 }
 
@@ -252,8 +206,9 @@ public partial class Player : Godot.CharacterBody2D {
 				val.Name
 			));
 		});
-		var t = StateClassTools.ToMermaid(_idle as Idle);
-		Console.Out.Write(t);
+
+		var t = StateClassTools.ToMermaid(States_index_by.data.Keys.ToList().Select(i => i.ToString()), _idle as Idle);
+		Console.Out.WriteLine(t);
 		StateClassTools.ValidateConnections(_idle as Idle);
 	}
 

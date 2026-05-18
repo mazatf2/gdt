@@ -1,0 +1,8 @@
+[gd_resource type="Theme" format=3 uid="uid://ejpesc5oklqr"]
+
+[ext_resource type="FontFile" uid="uid://cmefmvodr3yln" path="res://src/blue/viz/themes/JetBrainsMono-Regular.woff2" id="1_nytri"]
+
+[resource]
+default_font = ExtResource("1_nytri")
+Label/constants/outline_size = 4
+Label/font_sizes/font_size = 16

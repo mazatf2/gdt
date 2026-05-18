@@ -4,51 +4,28 @@
     "null"
   ],
   "properties": {
-    "className": {
-      "type": "string"
-    },
-    "classExtends": {
-      "type": "array",
-      "items": {
-        "type": [
-          "string",
-          "null"
-        ]
-      }
-    },
-    "classText": {
-      "type": "string"
-    },
-    "isStateClass": {
-      "type": "boolean"
-    },
-    "classLoc": {
-      "type": "object",
-      "properties": {
-        "Start": {
-          "type": "integer"
-        },
-        "End": {
-          "type": "integer"
-        },
-        "Length": {
-          "type": "integer"
-        },
-        "IsEmpty": {
-          "type": "boolean"
-        }
-      }
-    },
-    "output": {
-      "type": "object",
+    "data": {
+      "type": [
+        "object",
+        "null"
+      ],
       "additionalProperties": {
         "type": [
           "object",
           "null"
         ],
         "properties": {
+          "name": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "methods": {
-            "type": "array",
+            "type": [
+              "array",
+              "null"
+            ],
             "items": {
               "type": [
                 "object",
@@ -56,7 +33,10 @@
               ],
               "properties": {
                 "name": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "location": {
                   "type": "object",
@@ -76,7 +56,10 @@
                   }
                 },
                 "src": {
-                  "type": "string"
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 }
               },
               "required": [
@@ -87,18 +70,27 @@
             }
           },
           "properties": {
-            "type": "array",
+            "type": [
+              "array",
+              "null"
+            ],
             "items": {
-              "$ref": "#/properties/output/additionalProperties/properties/methods/items"
+              "$ref": "#/properties/data/additionalProperties/properties/methods/items"
             }
           },
           "fields": {
-            "type": "array",
+            "type": [
+              "array",
+              "null"
+            ],
             "items": {
-              "$ref": "#/properties/output/additionalProperties/properties/methods/items"
+              "$ref": "#/properties/data/additionalProperties/properties/methods/items"
             }
           }
-        }
+        },
+        "required": [
+          "name"
+        ]
       }
     }
   }

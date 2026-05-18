@@ -2,7 +2,7 @@
 
 namespace gdt.shared;
 
-public static class GodotExtensions {
+public static partial class GodotExtensions {
 	//callbacks to self and children. callback(this), callback(this.children)
 	public static T Traverse<T>(this Node node, Action<T> callback) where T : Node {
 		callback(node as T);
@@ -31,5 +31,17 @@ public static class GodotExtensions {
 		}
 
 		return (T)node;
+	}
+}
+
+public static partial class GodotExtensions {
+	extension(Node node) {
+		public Godot.Node[] Children {
+			set {
+				foreach (var child in value) {
+					node.AddChild(child);
+				}
+			}
+		}
 	}
 }

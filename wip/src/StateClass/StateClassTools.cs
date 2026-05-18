@@ -6,12 +6,12 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using gdt.shared;
+using gdt.wip.blue;
 
-namespace gdt.wip.blue;
+namespace gdt.wip;
 
 public class StateClassTools {
-	public static string ToMermaid(StateClass state) {
-		var stateNames = States_index_by.data.Keys;
+	public static string ToMermaid(IEnumerable<string> stateNames, StateClass state) {
 		var lines = new List<string>();
 
 		Travel(state, (n) => {
@@ -48,7 +48,7 @@ public class StateClassTools {
 		});
 	}
 
-	public static void Travel(wip.blue.StateClass node, Action<StateClass> callback, List<StateClass> visited = null) {
+	public static void Travel(StateClass node, Action<StateClass> callback, List<StateClass> visited = null) {
 		visited ??= [];
 		if (visited.Contains(node)) {
 			return;

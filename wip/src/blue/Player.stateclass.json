@@ -1,22 +1,13 @@
 {
-	"className": "Player",
-	"classExtends": [],
-	"classText": "",
-	"isStateClass": false,
-	"classLoc": {
-		"Start": 5311,
-		"End": 6894,
-		"Length": 1583,
-		"IsEmpty": false
-	},
-	"output": {
+	"data": {
 		"Idle": {
+			"name": "Idle",
 			"methods": [
 				{
 					"name": "_EnterTree",
 					"location": {
-						"Start": 1941,
-						"End": 2023,
+						"Start": 770,
+						"End": 852,
 						"Length": 82,
 						"IsEmpty": false
 					},
@@ -25,8 +16,8 @@
 				{
 					"name": "PhysicsProcess",
 					"location": {
-						"Start": 2026,
-						"End": 2275,
+						"Start": 855,
+						"End": 1104,
 						"Length": 249,
 						"IsEmpty": false
 					},
@@ -37,8 +28,8 @@
 				{
 					"name": "StateId",
 					"location": {
-						"Start": 1675,
-						"End": 1735,
+						"Start": 504,
+						"End": 564,
 						"Length": 60,
 						"IsEmpty": false
 					},
@@ -47,8 +38,8 @@
 				{
 					"name": "Connections",
 					"location": {
-						"Start": 1738,
-						"End": 1830,
+						"Start": 567,
+						"End": 659,
 						"Length": 92,
 						"IsEmpty": false
 					},
@@ -57,8 +48,8 @@
 				{
 					"name": "ConnectionList",
 					"location": {
-						"Start": 1833,
-						"End": 1938,
+						"Start": 662,
+						"End": 767,
 						"Length": 105,
 						"IsEmpty": false
 					},
@@ -68,12 +59,13 @@
 			"fields": []
 		},
 		"Jump": {
+			"name": "Jump",
 			"methods": [
 				{
 					"name": "_EnterTree",
 					"location": {
-						"Start": 2551,
-						"End": 2633,
+						"Start": 1380,
+						"End": 1462,
 						"Length": 82,
 						"IsEmpty": false
 					},
@@ -82,8 +74,8 @@
 				{
 					"name": "CanStart",
 					"location": {
-						"Start": 2636,
-						"End": 2713,
+						"Start": 1465,
+						"End": 1542,
 						"Length": 77,
 						"IsEmpty": false
 					},
@@ -92,8 +84,8 @@
 				{
 					"name": "Start",
 					"location": {
-						"Start": 2716,
-						"End": 2840,
+						"Start": 1545,
+						"End": 1669,
 						"Length": 124,
 						"IsEmpty": false
 					},
@@ -102,8 +94,8 @@
 				{
 					"name": "PhysicsProcess",
 					"location": {
-						"Start": 2843,
-						"End": 2979,
+						"Start": 1672,
+						"End": 1808,
 						"Length": 136,
 						"IsEmpty": false
 					},
@@ -114,8 +106,8 @@
 				{
 					"name": "StateId",
 					"location": {
-						"Start": 2321,
-						"End": 2381,
+						"Start": 1150,
+						"End": 1210,
 						"Length": 60,
 						"IsEmpty": false
 					},
@@ -124,8 +116,8 @@
 				{
 					"name": "Connections",
 					"location": {
-						"Start": 2384,
-						"End": 2458,
+						"Start": 1213,
+						"End": 1287,
 						"Length": 74,
 						"IsEmpty": false
 					},
@@ -134,8 +126,8 @@
 				{
 					"name": "ConnectionList",
 					"location": {
-						"Start": 2461,
-						"End": 2548,
+						"Start": 1290,
+						"End": 1377,
 						"Length": 87,
 						"IsEmpty": false
 					},
@@ -145,12 +137,13 @@
 			"fields": []
 		},
 		"Walk": {
+			"name": "Walk",
 			"methods": [
 				{
 					"name": "_EnterTree",
 					"location": {
-						"Start": 3325,
-						"End": 3407,
+						"Start": 2154,
+						"End": 2236,
 						"Length": 82,
 						"IsEmpty": false
 					},
@@ -159,8 +152,8 @@
 				{
 					"name": "CanStart",
 					"location": {
-						"Start": 3410,
-						"End": 3534,
+						"Start": 2239,
+						"End": 2363,
 						"Length": 124,
 						"IsEmpty": false
 					},
@@ -169,8 +162,8 @@
 				{
 					"name": "PhysicsProcess",
 					"location": {
-						"Start": 3537,
-						"End": 3793,
+						"Start": 2366,
+						"End": 2622,
 						"Length": 256,
 						"IsEmpty": false
 					},
@@ -181,8 +174,8 @@
 				{
 					"name": "StateId",
 					"location": {
-						"Start": 3025,
-						"End": 3085,
+						"Start": 1854,
+						"End": 1914,
 						"Length": 60,
 						"IsEmpty": false
 					},
@@ -191,8 +184,8 @@
 				{
 					"name": "Connections",
 					"location": {
-						"Start": 3088,
-						"End": 3197,
+						"Start": 1917,
+						"End": 2026,
 						"Length": 109,
 						"IsEmpty": false
 					},
@@ -201,8 +194,8 @@
 				{
 					"name": "ConnectionList",
 					"location": {
-						"Start": 3200,
-						"End": 3322,
+						"Start": 2029,
+						"End": 2151,
 						"Length": 122,
 						"IsEmpty": false
 					},
@@ -212,12 +205,13 @@
 			"fields": []
 		},
 		"Run": {
+			"name": "Run",
 			"methods": [
 				{
 					"name": "_EnterTree",
 					"location": {
-						"Start": 4139,
-						"End": 4219,
+						"Start": 2968,
+						"End": 3048,
 						"Length": 80,
 						"IsEmpty": false
 					},
@@ -226,8 +220,8 @@
 				{
 					"name": "CanStart",
 					"location": {
-						"Start": 4222,
-						"End": 4372,
+						"Start": 3051,
+						"End": 3201,
 						"Length": 150,
 						"IsEmpty": false
 					},
@@ -236,8 +230,8 @@
 				{
 					"name": "PhysicsProcess",
 					"location": {
-						"Start": 4375,
-						"End": 4574,
+						"Start": 3204,
+						"End": 3403,
 						"Length": 199,
 						"IsEmpty": false
 					},
@@ -248,8 +242,8 @@
 				{
 					"name": "StateId",
 					"location": {
-						"Start": 3838,
-						"End": 3897,
+						"Start": 2667,
+						"End": 2726,
 						"Length": 59,
 						"IsEmpty": false
 					},
@@ -258,8 +252,8 @@
 				{
 					"name": "Connections",
 					"location": {
-						"Start": 3900,
-						"End": 4010,
+						"Start": 2729,
+						"End": 2839,
 						"Length": 110,
 						"IsEmpty": false
 					},
@@ -268,8 +262,8 @@
 				{
 					"name": "ConnectionList",
 					"location": {
-						"Start": 4013,
-						"End": 4136,
+						"Start": 2842,
+						"End": 2965,
 						"Length": 123,
 						"IsEmpty": false
 					},

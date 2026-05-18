@@ -1,9 +1,481 @@
 [gd_scene format=3 uid="uid://dlaxlmynni78v"]
 
-[node name="viz" type="Control" unique_id=1819074058]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" uid="uid://d2fb2jj7lmqpu" path="res://src/blue/viz/Viz.cs" id="1_6usjo"]
+[ext_resource type="Texture2D" uid="uid://dmywhwu1df8p7" path="res://src/blue/viz/viz_headline-state.svg" id="2_fk000"]
+[ext_resource type="Theme" uid="uid://ejpesc5oklqr" path="res://src/blue/viz/themes/label_code.tres" id="3_q6dh0"]
+[ext_resource type="Texture2D" uid="uid://8g4t24v4c2bl" path="res://src/blue/viz/viz_action-codeblock.svg" id="4_go6lq"]
+[ext_resource type="Texture2D" uid="uid://cy11b5faiv4x3" path="res://src/blue/viz/viz_address-to-state.svg" id="5_2kvcv"]
+
+[node name="viz" type="Node2D" unique_id=345353490]
+script = ExtResource("1_6usjo")
+
+[node name="stateColumn" type="Node2D" parent="." unique_id=693368996]
+unique_name_in_owner = true
+position = Vector2(19, 11)
+
+[node name="vizHeadlineState" type="NinePatchRect" parent="stateColumn" unique_id=750166585]
+offset_left = -2.0
+offset_right = 126.0
+offset_bottom = 128.0
+texture = ExtResource("2_fk000")
+
+[node name="name" type="Label" parent="stateColumn/vizHeadlineState" unique_id=504887837]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "temp"
+metadata/_edit_lock_ = true
+
+[node name="vizActionCodeblock" type="NinePatchRect" parent="stateColumn" unique_id=459554492]
+offset_left = -3.0
+offset_top = 185.0
+offset_right = 125.0
+offset_bottom = 313.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="stateColumn/vizActionCodeblock" unique_id=415158195]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "temp"
+metadata/_edit_lock_ = true
+
+[node name="vizAddressToState" type="NinePatchRect" parent="stateColumn" unique_id=1274892180]
+offset_left = -3.0
+offset_top = 429.0
+offset_right = 125.0
+offset_bottom = 557.0
+texture = ExtResource("5_2kvcv")
+
+[node name="toState" type="Label" parent="stateColumn/vizAddressToState" unique_id=59301103]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 209.0
+offset_bottom = 149.0
+theme = ExtResource("3_q6dh0")
+text = "temp"
+metadata/_edit_lock_ = true
+
+[node name="@Node2D@41759" type="Node2D" parent="." unique_id=360751860]
+unique_name_in_owner = true
+position = Vector2(19, 11)
+metadata/remove = true
+
+[node name="vizHeadlineState" type="NinePatchRect" parent="@Node2D@41759" unique_id=79113341]
+offset_left = -2.0
+offset_right = 126.0
+offset_bottom = 128.0
+texture = ExtResource("2_fk000")
+
+[node name="name" type="Label" parent="@Node2D@41759/vizHeadlineState" unique_id=1522113487]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "Idle"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41758" type="NinePatchRect" parent="@Node2D@41759" unique_id=456756888]
+offset_left = -3.0
+offset_top = 313.0
+offset_right = 746.0
+offset_bottom = 473.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41759/@NinePatchRect@41758" unique_id=297235382]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void PhysicsProcess(float delta) {
+  if (Input.IsActionPressed(\"ui_up\")) {
+    ChangeState(Connections.Jump);
+  }
+  if (Input.IsActionPressed(\"ui_left\") || Input.IsActionPressed(\"ui_right\")) {
+    ChangeState(Connections.Walk);
+  }
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41757" type="NinePatchRect" parent="@Node2D@41759" unique_id=1285307365]
+offset_left = -3.0
+offset_top = 185.0
+offset_right = 333.0
+offset_bottom = 281.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41759/@NinePatchRect@41757" unique_id=44505717]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void _EnterTree() {
+  Store.idle.value = this;
+  Name = \"idle\";
+}"
+metadata/_edit_lock_ = true
+
+[node name="vizAddressToState" type="NinePatchRect" parent="@Node2D@41759" unique_id=2122799307]
+offset_left = -3.0
+offset_top = 505.0
+offset_right = 621.0
+offset_bottom = 633.0
+texture = ExtResource("5_2kvcv")
+
+[node name="toState" type="Label" parent="@Node2D@41759/vizAddressToState" unique_id=539589879]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 209.0
+offset_bottom = 149.0
+theme = ExtResource("3_q6dh0")
+text = "
+	public override List<StateEnum> ConnectionList { get; init; } = [
+		StateEnum.Jump,
+		StateEnum.Walk,
+	];
+"
+metadata/_edit_lock_ = true
+
+[node name="@Node2D@41764" type="Node2D" parent="." unique_id=1360304239]
+unique_name_in_owner = true
+position = Vector2(800, 11)
+metadata/remove = true
+
+[node name="vizHeadlineState" type="NinePatchRect" parent="@Node2D@41764" unique_id=1758455688]
+offset_left = -2.0
+offset_right = 126.0
+offset_bottom = 128.0
+texture = ExtResource("2_fk000")
+
+[node name="name" type="Label" parent="@Node2D@41764/vizHeadlineState" unique_id=1787867922]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "Jump"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41763" type="NinePatchRect" parent="@Node2D@41764" unique_id=314718496]
+offset_left = -3.0
+offset_top = 537.0
+offset_right = 477.0
+offset_bottom = 649.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41764/@NinePatchRect@41763" unique_id=316679035]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void PhysicsProcess(float delta) {
+  if (Store.player.value.IsOnFloor()) {
+    this.ChangeState(Connections.Idle);
+  }
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41762" type="NinePatchRect" parent="@Node2D@41764" unique_id=1823862233]
+offset_left = -3.0
+offset_top = 425.0
+offset_right = 861.0
+offset_bottom = 505.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41764/@NinePatchRect@41762" unique_id=1201089870]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void Start() {
+  Store.player.value.Velocity = Store.player.value.Velocity with { Y = Store._jumpSpeed };
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41761" type="NinePatchRect" parent="@Node2D@41764" unique_id=1145846539]
+offset_left = -3.0
+offset_top = 313.0
+offset_right = 381.0
+offset_bottom = 393.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41764/@NinePatchRect@41761" unique_id=1744175816]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override bool CanStart() {
+  return Store.player.value.IsOnFloor();
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41760" type="NinePatchRect" parent="@Node2D@41764" unique_id=2040923537]
+offset_left = -3.0
+offset_top = 185.0
+offset_right = 333.0
+offset_bottom = 281.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41764/@NinePatchRect@41760" unique_id=720983847]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void _EnterTree() {
+  Store.jump.value = this;
+  Name = \"jump\";
+}"
+metadata/_edit_lock_ = true
+
+[node name="vizAddressToState" type="NinePatchRect" parent="@Node2D@41764" unique_id=152910917]
+offset_left = -3.0
+offset_top = 681.0
+offset_right = 621.0
+offset_bottom = 809.0
+texture = ExtResource("5_2kvcv")
+
+[node name="toState" type="Label" parent="@Node2D@41764/vizAddressToState" unique_id=513429405]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 209.0
+offset_bottom = 149.0
+theme = ExtResource("3_q6dh0")
+text = "
+	public override List<StateEnum> ConnectionList { get; init; } = [
+		StateEnum.Idle,
+	];
+"
+metadata/_edit_lock_ = true
+
+[node name="@Node2D@41768" type="Node2D" parent="." unique_id=1316023096]
+unique_name_in_owner = true
+position = Vector2(1696, 11)
+metadata/remove = true
+
+[node name="vizHeadlineState" type="NinePatchRect" parent="@Node2D@41768" unique_id=329347634]
+offset_left = -2.0
+offset_right = 126.0
+offset_bottom = 128.0
+texture = ExtResource("2_fk000")
+
+[node name="name" type="Label" parent="@Node2D@41768/vizHeadlineState" unique_id=1378467696]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "Walk"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41767" type="NinePatchRect" parent="@Node2D@41768" unique_id=1596797717]
+offset_left = -3.0
+offset_top = 425.0
+offset_right = 918.0
+offset_bottom = 569.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41768/@NinePatchRect@41767" unique_id=516585976]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void PhysicsProcess(float delta) {
+  var dir = Input.GetAxis(\"ui_left\", \"ui_right\");
+  Store.player.value.Velocity = Store.player.value.Velocity with { X = dir * Store._walkSpeed };
+  if (dir == 0) {
+    ChangeState(Connections.Idle);
+  }
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41766" type="NinePatchRect" parent="@Node2D@41768" unique_id=2036072022]
+offset_left = -3.0
+offset_top = 313.0
+offset_right = 832.0
+offset_bottom = 393.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41768/@NinePatchRect@41766" unique_id=1250826642]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override bool CanStart() {
+  return Input.IsActionJustPressed(\"ui_left\") || Input.IsActionJustPressed(\"ui_right\");
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41765" type="NinePatchRect" parent="@Node2D@41768" unique_id=970898205]
+offset_left = -3.0
+offset_top = 185.0
+offset_right = 333.0
+offset_bottom = 281.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41768/@NinePatchRect@41765" unique_id=1595594105]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void _EnterTree() {
+  Store.walk.value = this;
+  Name = \"walk\";
+}"
+metadata/_edit_lock_ = true
+
+[node name="vizAddressToState" type="NinePatchRect" parent="@Node2D@41768" unique_id=2129621104]
+offset_left = -3.0
+offset_top = 601.0
+offset_right = 621.0
+offset_bottom = 729.0
+texture = ExtResource("5_2kvcv")
+
+[node name="toState" type="Label" parent="@Node2D@41768/vizAddressToState" unique_id=1778929133]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 209.0
+offset_bottom = 149.0
+theme = ExtResource("3_q6dh0")
+text = "
+	public override List<StateEnum> ConnectionList { get; init; } = [
+		StateEnum.Idle,
+		StateEnum.Jump,
+		StateEnum.Run,
+	];
+"
+metadata/_edit_lock_ = true
+
+[node name="@Node2D@41772" type="Node2D" parent="." unique_id=669004362]
+unique_name_in_owner = true
+position = Vector2(2649, 11)
+metadata/remove = true
+
+[node name="vizHeadlineState" type="NinePatchRect" parent="@Node2D@41772" unique_id=2064671278]
+offset_left = -2.0
+offset_right = 126.0
+offset_bottom = 128.0
+texture = ExtResource("2_fk000")
+
+[node name="name" type="Label" parent="@Node2D@41772/vizHeadlineState" unique_id=1938550397]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "Run"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41771" type="NinePatchRect" parent="@Node2D@41772" unique_id=828305431]
+offset_left = -3.0
+offset_top = 425.0
+offset_right = 909.0
+offset_bottom = 521.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41772/@NinePatchRect@41771" unique_id=471542688]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void PhysicsProcess(float delta) {
+  var dir = Input.GetAxis(\"ui_left\", \"ui_right\");
+  Store.player.value.Velocity = Store.player.value.Velocity with { X = dir * Store._runSpeed };
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41770" type="NinePatchRect" parent="@Node2D@41772" unique_id=375324191]
+offset_left = -3.0
+offset_top = 313.0
+offset_right = 1082.0
+offset_bottom = 393.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41772/@NinePatchRect@41770" unique_id=1327710901]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override bool CanStart() {
+  return Store.player.value.IsOnFloor() && Input.IsActionPressed(\"ui_left\") || Input.IsActionPressed(\"ui_right\");
+}"
+metadata/_edit_lock_ = true
+
+[node name="@NinePatchRect@41769" type="NinePatchRect" parent="@Node2D@41772" unique_id=1880152918]
+offset_left = -3.0
+offset_top = 185.0
+offset_right = 333.0
+offset_bottom = 281.0
+texture = ExtResource("4_go6lq")
+
+[node name="src" type="Label" parent="@Node2D@41772/@NinePatchRect@41769" unique_id=23757795]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 212.0
+offset_bottom = 115.0
+theme = ExtResource("3_q6dh0")
+text = "public override void _EnterTree() {
+  Store.run.value = this;
+  Name = \"run\";
+}"
+metadata/_edit_lock_ = true
+
+[node name="vizAddressToState" type="NinePatchRect" parent="@Node2D@41772" unique_id=463709387]
+offset_left = -3.0
+offset_top = 553.0
+offset_right = 621.0
+offset_bottom = 681.0
+texture = ExtResource("5_2kvcv")
+
+[node name="toState" type="Label" parent="@Node2D@41772/vizAddressToState" unique_id=971412532]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 40.0
+offset_right = 209.0
+offset_bottom = 149.0
+theme = ExtResource("3_q6dh0")
+text = "
+	public override List<StateEnum> ConnectionList { get; init; } = [
+		StateEnum.Idle,
+		StateEnum.Jump,
+		StateEnum.Walk,
+	];
+"
+metadata/_edit_lock_ = true
