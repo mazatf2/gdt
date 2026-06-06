@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://bycijg0ltvv07"]
+
+[ext_resource type="Script" uid="uid://dvwwkltych8x" path="res://src/Numbers.gd" id="1_g54vs"]
+
+[node name="numbers" type="Node" unique_id=1378434046]
+script = ExtResource("1_g54vs")
+num1 = 45
+num1_ = -45
+num2 = 36689
+num2_ = -36689
+num3 = 42
+num3_ = -42
+num4 = 3.14
+num4_ = -3.14
+num5 = 5.81e-09
+num5_ = -5.81e-09
+num6 = 12345678
+num6_ = -12345678
+num7 = 3.1415927
+num7_ = -3.1415927
+num8 = 141287244234751
+num8_ = -141287244234751
+num9 = 204
+num9_ = -204
+num10 = 0.5
+num10_ = -0.5
+num11 = 5.81
+num11_ = -5.81
+num12 = 5.81e-09
+num12_ = -5.81e-09
+num13 = 5.8099999999999995e-99
+num13_ = -5.8099999999999995e-99
+num14 = 0.0
+num14_ = 0.0
+num15 = 5e-09
+num15_ = -5e-09
+num16 = 0.0
+num16_ = 0.0
+num17 = 0.0
+num17_ = 0.0
+num18 = 5.81e-09
+num18_ = -5.81e-09
+num19 = 5.81e-14
+num19_ = -5.81e-14
+num20 = 0.000581
+num20_ = -0.000581
+num21 = 5.8100000000000006e-21
+num21_ = -5.8100000000000006e-21
+num22 = 5.809999999999999e+21
+num22_ = -5.809999999999999e+21
+num23 = 5.809999999999999e+21
+num23_ = -5.809999999999999e+21

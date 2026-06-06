@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://d3k6fg527fo5k"]
+
+[sub_resource type="GDScript" id="GDScript_fx3tp"]
+resource_name = "test"
+script/source = "@tool extends Node
+var str1 = \"\"
+var arr1 = [INF, -INF]
+@export var export1 := [INF, -INF, PI, -PI, TAU, -TAU, null, foo()]
+func foo():
+	pass
+"
+
+[node name="InternalGdscript" type="Node" unique_id=1715136359]
+script = SubResource("GDScript_fx3tp")
+export1 = [inf, inf_neg, 3.141592653589793, -3.141592653589793, 6.283185307179586, -6.283185307179586, null, true, null]

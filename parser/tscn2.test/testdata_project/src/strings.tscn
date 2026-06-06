@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://1afpnm143b6c"]
+
+[ext_resource type="Script" uid="uid://c6c2lma1udpc4" path="res://src/Strings.gd" id="1_v45ub"]
+
+[node name="strings" type="Node" unique_id=1970869025]
+script = ExtResource("1_v45ub")
+d1 = "Hello"
+d2 = "Hi"
+d3 = "Hello"
+d4 = "Hi"
+d5 = "Hello"
+d6 = "Hi"
+d7 = "Hello"
+d8 = "Hi"
+d9 = &"name"
+d10 = NodePath("Node/Label")
+metadata/_custom_type_script = "uid://c6c2lma1udpc4"

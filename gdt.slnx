@@ -8,9 +8,13 @@
 	<Folder Name="/tools/">
 		<File Path="tools/tscn_cs_subscript_fix/tscn_cs_subscript_fix.cs" />
 		<File Path="tools/stateclass2json/stateclass2json.cs" />
-		<Project Path="tools/tscn2stuff/tscn2stuff.csproj" />
+		<File Path="tools/tscn2cs/tscn2cs.cs" />
 	</Folder>
 	<Folder Name="/shared/">
 		<Project Path="shared/gdt.shared.csproj" />
+	</Folder>
+	<Folder Name="/parser/">
+		<Project Path="parser/tscn2/gdt.tscn2.csproj" />
+		<Project Path="parser/tscn2.test/gdt.tscn2.test.csproj" />
 	</Folder>
 </Solution>

@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://cyf68s8m7trq0"]
-
-[ext_resource type="Script" uid="uid://4d1hfscknwak" path="res://src/tscninfo/TscnInfo.cs" id="1_6feyp"]
-
-[node name="tscninfo" type="Node" unique_id=1591326716]
-script = ExtResource("1_6feyp")
