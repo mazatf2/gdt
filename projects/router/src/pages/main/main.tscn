@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://sf4ec6lu84or"]
+
+[ext_resource type="Script" uid="uid://conxilt6g3nfa" path="res://src/pages/main/Main.cs" id="1_xefci"]
+[ext_resource type="Texture2D" uid="uid://bsotbwi6qwjmo" path="res://src/pages/main/background earth.svg" id="2_4d80n"]
+[ext_resource type="PackedScene" uid="uid://cpidj55ogyqyl" path="res://src/el/Footer.tscn" id="3_50bm3"]
+[ext_resource type="Script" uid="uid://lintshrkni0w" path="res://src/pages/main/monthlyreport/MonthlyReport.cs" id="3_nlqcl"]
+
+[node name="main" type="Node" unique_id=800627582]
+script = ExtResource("1_xefci")
+
+[node name="centerContainer" type="CenterContainer" parent="." unique_id=1717116592]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 128.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="textureRect" type="TextureRect" parent="centerContainer" unique_id=993559871]
+layout_mode = 2
+texture = ExtResource("2_4d80n")
+
+[node name="row" type="VBoxContainer" parent="." unique_id=1896315446]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main-header" type="HBoxContainer" parent="row" unique_id=1446371658]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="label" type="Label" parent="row/main-header" unique_id=2067387346]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "header"
+
+[node name="main-infoEl" type="HBoxContainer" parent="row/main-header" unique_id=1788459187]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="label3" type="Label" parent="row/main-header" unique_id=1368810349]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "header"
+
+[node name="main-body" type="HBoxContainer" parent="row" unique_id=1274490998]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="main-body-c0" type="Control" parent="row/main-body" unique_id=1710775363]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="mr-2013-03" type="Control" parent="row/main-body/main-body-c0" unique_id=432397538]
+anchors_preset = 0
+rotation = 0.7853982
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2013-04" type="Control" parent="row/main-body/main-body-c0" unique_id=1257316994]
+anchors_preset = 0
+rotation = 1.0471976
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2013-05" type="Control" parent="row/main-body/main-body-c0" unique_id=1417140163]
+anchors_preset = 0
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2013-06" type="Control" parent="row/main-body/main-body-c0" unique_id=121254056]
+anchors_preset = 0
+rotation = 0.2617994
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2013-07" type="Control" parent="row/main-body/main-body-c0" unique_id=1679981778]
+anchors_preset = 0
+rotation = 0.5235988
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2013-08" type="Control" parent="row/main-body/main-body-c0" unique_id=901715053]
+anchors_preset = 0
+rotation = 0.7853982
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2013-09" type="Control" parent="row/main-body/main-body-c0" unique_id=70898111]
+anchors_preset = 0
+rotation = 1.0471976
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2000-02" type="Control" parent="row/main-body/main-body-c0" unique_id=11094385]
+anchors_preset = 0
+rotation = 0.5235988
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2000-03" type="Control" parent="row/main-body/main-body-c0" unique_id=155986447]
+anchors_preset = 0
+rotation = 0.7853982
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2000-04" type="Control" parent="row/main-body/main-body-c0" unique_id=1327790728]
+anchors_preset = 0
+rotation = 1.0471976
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2000-05" type="Control" parent="row/main-body/main-body-c0" unique_id=781559717]
+anchors_preset = 0
+script = ExtResource("3_nlqcl")
+
+[node name="mr-2000-06" type="Control" parent="row/main-body/main-body-c0" unique_id=109931043]
+anchors_preset = 0
+rotation = 0.2617994
+script = ExtResource("3_nlqcl")
+
+[node name="main-body-c1" type="CenterContainer" parent="row/main-body" unique_id=402725271]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="main-body-c2" type="CenterContainer" parent="row/main-body" unique_id=787269056]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="footer" parent="row" unique_id=705288570 instance=ExtResource("3_50bm3")]
+layout_mode = 2

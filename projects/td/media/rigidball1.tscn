@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b8giy5f0xvopx"]
+
+[ext_resource type="PackedScene" uid="uid://co5gf3fybnaql" path="res://media/rigidball1.blend" id="1_afpqj"]
+
+[node name="rigidball1" unique_id=638868655 instance=ExtResource("1_afpqj")]

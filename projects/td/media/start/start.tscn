@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bgatltfn4e8db"]
+
+[ext_resource type="PackedScene" uid="uid://jje2wysy1803" path="res://media/start/start.blend" id="1_8vihv"]
+[ext_resource type="Script" uid="uid://besj3lm6qkio1" path="res://media/start/anim_autoplay.gd" id="2_nlt3k"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlt3k"]
+size = Vector3(0.99999994, 1, 1)
+
+[node name="start" unique_id=1595938726 instance=ExtResource("1_8vihv")]
+
+[node name="ball" parent="." index="0" unique_id=760030663]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65595794, 0)
+
+[node name="Area3D" type="Area3D" parent="ball" index="0" unique_id=1644474444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-07, 0, -1.7881393e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ball/Area3D" index="0" unique_id=1109068369]
+shape = SubResource("BoxShape3D_nlt3k")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1042351761]
+autoplay = &"startAction"
+script = ExtResource("2_nlt3k")

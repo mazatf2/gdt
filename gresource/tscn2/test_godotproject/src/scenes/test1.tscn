@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://b2qq5q37cx1v7"]
+
+[node name="Test1" type="Node" unique_id=1167980662]
+
+[node name="cam" type="Camera3D" parent="." unique_id=1267706491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5516043)
+
+[node name="car" type="CSGBox3D" parent="." unique_id=1962401522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.03430134, -0.93640137)
+size = Vector3(1, 0.26904297, 2.8728027)
+
+[node name="axle1" type="CSGCylinder3D" parent="car" unique_id=1719432226]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.5680896, 4.4703484e-08, 1.0143675)
+radius = 0.056
+height = 0.351
+
+[node name="wheel1" type="CSGCylinder3D" parent="car/axle1" unique_id=735825022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22259259, 0)
+height = 0.27062988
+
+[node name="nut1" type="CSGCylinder3D" parent="car/axle1/wheel1" unique_id=505147570]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.122455, -0.11074895)
+radius = 0.01
+height = 0.058
+
+[node name="nut2" type="CSGCylinder3D" parent="car/axle1/wheel1" unique_id=453093517]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1175871e-08, 0.122455, 0.10604757)
+radius = 0.01
+height = 0.058
+
+[node name="center" type="CSGCylinder3D" parent="car/axle1/wheel1" unique_id=799074582]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.14610928, 0)
+radius = 0.049
+height = 0.058
+
+[node name="axle2" type="CSGCylinder3D" parent="car" unique_id=1143627253]
+transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, -0.5680896, 4.4703484e-08, -0.92160404)
+radius = 0.056
+height = 0.351
+
+[node name="wheel1" type="CSGCylinder3D" parent="car/axle2" unique_id=1262459897]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22259259, 0)
+height = 0.27062988
+
+[node name="nut1" type="CSGCylinder3D" parent="car/axle2/wheel1" unique_id=1949198960]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.122455, -0.11074895)
+radius = 0.01
+height = 0.058
+
+[node name="nut2" type="CSGCylinder3D" parent="car/axle2/wheel1" unique_id=132631753]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1175871e-08, 0.122455, 0.10604757)
+radius = 0.01
+height = 0.058
+
+[node name="center" type="CSGCylinder3D" parent="car/axle2/wheel1" unique_id=1831201825]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.14610928, 0)
+radius = 0.049
+height = 0.058
+
+[node name="axle3" type="CSGCylinder3D" parent="car" unique_id=327125119]
+transform = Transform3D(4.3711385e-08, 0.99999994, 0.00024429162, 1, -4.371139e-08, 0, 1.0678325e-11, 0.00024429162, -0.99999994, 0.60256016, 4.4703484e-08, -0.9216039)
+radius = 0.056
+height = 0.351
+
+[node name="wheel1" type="CSGCylinder3D" parent="car/axle3" unique_id=1349670249]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22259259, 0)
+height = 0.27062988
+
+[node name="nut" type="CSGCylinder3D" parent="car/axle3/wheel1" unique_id=928894455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.122455, -0.11074895)
+radius = 0.01
+height = 0.058
+
+[node name="nut2" type="CSGCylinder3D" parent="car/axle3/wheel1" unique_id=786623122]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1175871e-08, 0.122455, 0.10604757)
+radius = 0.01
+height = 0.058
+
+[node name="center" type="CSGCylinder3D" parent="car/axle3/wheel1" unique_id=2060100971]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.14610928, 0)
+radius = 0.049
+height = 0.058
+
+[node name="axle4" type="CSGCylinder3D" parent="car" unique_id=106639098]
+transform = Transform3D(4.3711385e-08, 0.99999994, 0.00024429162, 1, -4.371139e-08, 0, 1.0678325e-11, 0.00024429162, -0.99999994, 0.60208714, 4.4703484e-08, 1.0143673)
+radius = 0.056
+height = 0.351
+
+[node name="wheel1" type="CSGCylinder3D" parent="car/axle4" unique_id=1375037574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22259259, 0)
+height = 0.27062988
+
+[node name="nut" type="CSGCylinder3D" parent="car/axle4/wheel1" unique_id=901833240]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.122455, -0.11074895)
+radius = 0.01
+height = 0.058
+
+[node name="nut2" type="CSGCylinder3D" parent="car/axle4/wheel1" unique_id=602242216]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1175871e-08, 0.122455, 0.10604757)
+radius = 0.01
+height = 0.058
+
+[node name="center" type="CSGCylinder3D" parent="car/axle4/wheel1" unique_id=1995614443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.450581e-09, 0.14610928, 0)
+radius = 0.049
+height = 0.058
+
+[node name="sun" type="DirectionalLight3D" parent="." unique_id=1908337800]
+transform = Transform3D(1, 0, 0, 0, 0.20716043, 0.978307, 0, -0.978307, 0.20716043, 0, 10.204039, 0)

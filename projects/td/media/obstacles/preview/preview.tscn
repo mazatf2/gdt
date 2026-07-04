@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://doh3t57hcwh53"]
+
+[ext_resource type="PackedScene" uid="uid://pywgmw58yfql" path="res://media/obstacles/preview/preview.blend" id="1_vfwmx"]
+[ext_resource type="Script" uid="uid://b8ruoq0hocbnh" path="res://media/obstacles/preview/Preview.cs" id="2_x4hfn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqnpr"]
+resource_name = "preview"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.004497572, 0.00306053, 0.3434055, 0.5)
+roughness = 0.5
+
+[node name="preview2" unique_id=1402917968 instance=ExtResource("1_vfwmx")]
+script = ExtResource("2_x4hfn")
+Mat = SubResource("StandardMaterial3D_aqnpr")

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://b65xb53epff8i"]
+
+[ext_resource type="Script" uid="uid://wcbyjfxycs8t" path="res://src/temp/TempButton.cs" id="1_s80d8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s80d8"]
+albedo_color = Color(0.062030405, 0.30777705, 0.4078194, 1)
+metallic = 0.1
+metallic_specular = 0.1
+emission_enabled = true
+emission = Color(0.44468936, 0.46204126, 0.4694441, 1)
+
+[node name="node" type="Node" unique_id=1720477395]
+script = ExtResource("1_s80d8")
+
+[node name="Box" type="CSGBox3D" parent="." unique_id=135500174]
+transform = Transform3D(1.4142134, 0, -1.4142134, 0, 2, 0, 1.4142134, 0, 1.4142134, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_s80d8")
+size = Vector3(2, 2, 2)
+
+[node name="Box" type="CSGBox3D" parent="Box" unique_id=1142378118]
+transform = Transform3D(1.4142134, 0, -1.4142134, 0, 2, 0, 1.4142134, 0, 1.4142134, -3.771069, 0, 4.392154)
+material_override = SubResource("StandardMaterial3D_s80d8")
+size = Vector3(2, 2, 2)
+
+[node name="Box2" type="CSGBox3D" parent="Box/Box" unique_id=2067881023]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 2.886135, 0, 2.6111789)
+material_override = SubResource("StandardMaterial3D_s80d8")
+size = Vector3(2, 2, 2)
+
+[node name="Box3" type="CSGBox3D" parent="Box/Box/Box2" unique_id=863165529]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.384186e-07, 3.4045773, -3.0714529)
+material_override = SubResource("StandardMaterial3D_s80d8")
+size = Vector3(2, 2, 2)

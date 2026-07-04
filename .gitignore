@@ -12,3 +12,6 @@
 **/bin
 **/obj
 **/nupkg
+
+*.blend
+*.blend1

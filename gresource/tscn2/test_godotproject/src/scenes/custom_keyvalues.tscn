@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://drep4qfhpdrja"]
+
+[sub_resource type="GDScript" id="GDScript_6sucn"]
+script/source = "@tool extends Control
+
+class lower extends Button:
+	var num = PI
+	pass
+	
+class Upper extends Button:
+	var num = PI
+	pass
+
+@export var varLower: lower = getL()
+@export var VarUpper: Upper = Upper.new()
+
+func getL() -> lower:
+	return lower.new()
+	
+func getU() -> Upper:
+	return Upper.new()
+
+func _ready() -> void:
+	pass
+	
+"
+
+[node name="CustomKeyvalues" type="Control" unique_id=551225549 node_paths=PackedStringArray("varLower", "VarUpper")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_6sucn")
+varLower = NodePath("")
+VarUpper = NodePath("")

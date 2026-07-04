@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Diagnostics;
+using Godot;
 
 namespace gdt.shared;
 
@@ -41,6 +42,42 @@ public static partial class GodotExtensions {
 				foreach (var child in value) {
 					node.AddChild(child);
 				}
+			}
+		}
+
+		public (Godot.Node parent, Godot.Node owner) AddTo {
+			set {
+				Debug.Assert(value.parent != null);
+				Debug.Assert(value.owner != null);
+				value.parent.AddChild(node);
+				node.Owner = value.owner;
+			}
+		}
+
+		public T GetNodeOrAdd<T>(string path, Func<T> add) where T : Node {
+			var n = node.GetNodeOrNull<T>(path);
+			if (n == null) {
+				n = add();
+			}
+
+			return n;
+		}
+	}
+}
+
+public static partial class GodotExtensions {
+	extension(Camera3D cam) {
+		public bool Raycast(Godot.Vector3 to) {
+			return true;
+		}
+	}
+}
+
+public static partial class GodotExtensions {
+	extension(Node node) {
+		public bool IsEditorHint {
+			get {
+				return Godot.Engine.IsEditorHint();
 			}
 		}
 	}

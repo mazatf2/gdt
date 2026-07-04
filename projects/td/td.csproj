@@ -1,0 +1,26 @@
+<Project Sdk="Godot.NET.Sdk/4.7.0">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+	</PropertyGroup>
+	<PropertyGroup>
+		<RootNamespace>gdt.projects.td</RootNamespace>
+		<TargetFramework>net10.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PublishAot>false</PublishAot>
+		<InvariantGlobalization>true</InvariantGlobalization>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="../../shared/gdt.shared.csproj"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="GodotSharp.SourceGenerators" Version="2.7.0"/>
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="media/block3/"/>
+		<Folder Include="media/pack1/"/>
+		<Folder Include="media/obstacles/preview/"/>
+	</ItemGroup>
+</Project>

@@ -2,13 +2,13 @@
 #:sdk Microsoft.NET.Sdk
 #:package Microsoft.CodeAnalysis.Analyzers@3.3.4
 #:package Microsoft.CodeAnalysis.CSharp@3.4.0
-#:project ../../wip
+#:project ../../projects/wip
 #:property PublishAot=false
 
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Schema;
-using gdt.wip;
+using gdt.projects.wip.StateClass;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
@@ -24,7 +24,7 @@ record State {
 
 class Program {
 	public static void Main(string[] args) {
-		var str_StateClass = nameof(gdt.wip.StateClass);
+		var str_StateClass = nameof(gdt.projects.wip.StateClass);
 
 		var tree = CSharpSyntaxTree.ParseText(SourceText.From(File.ReadAllText("D:/ga/gdt/wip/src/blue/Player.cs", Encoding.UTF8)));
 		var root = tree.GetRoot();
@@ -92,8 +92,8 @@ class Program {
 		}
 
 		var json = JsonSerializer.Serialize(state.export, StateClassJson.Opts);
-		File.WriteAllText("D:/ga/gdt/wip/src/blue/Player.stateclass.json", json, StateClassJson.Utf8);
+		File.WriteAllText("D:/ga/gdt/wip/src/blue/Player.stateclass.json", json, StateClassJson.Utf8NoBom);
 		var schema = StateClassJson.Opts.GetJsonSchemaAsNode(typeof(StateClassJsonDataExport));
-		File.WriteAllText("./stateclass.schema.json", schema.ToString(), StateClassJson.Utf8);
+		File.WriteAllText("./stateclass.schema.json", schema.ToString(), StateClassJson.Utf8NoBom);
 	}
 }

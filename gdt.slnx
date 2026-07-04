@@ -1,20 +1,22 @@
 <Solution>
-	<Folder Name="/router/">
-		<Project Path="router/gdt.router.csproj" />
-	</Folder>
-	<Folder Name="/wip/">
-		<Project Path="wip/gdt.wip.csproj" />
+	<Folder Name="/projects/">
+		<Project Path="projects/td/td.csproj"/>
+		<Project Path="projects/router/router.csproj"/>
+		<Project Path="projects/wip/wip.csproj"/>
 	</Folder>
 	<Folder Name="/tools/">
-		<File Path="tools/tscn_cs_subscript_fix/tscn_cs_subscript_fix.cs" />
-		<File Path="tools/stateclass2json/stateclass2json.cs" />
-		<File Path="tools/tscn2cs/tscn2cs.cs" />
+		<File Path="tools/tscn_cs_subscript_fix/tscn_cs_subscript_fix.cs"/>
+		<File Path="tools/stateclass2json/stateclass2json.cs"/>
+		<File Path="tools/tscn2cs/tscn2cs.cs"/>
+		<File Path="tools/tscn2cs/_sample.cs"/>
 	</Folder>
 	<Folder Name="/shared/">
-		<Project Path="shared/gdt.shared.csproj" />
+		<Project Path="shared/gdt.shared.csproj"/>
 	</Folder>
-	<Folder Name="/parser/">
-		<Project Path="parser/tscn2/gdt.tscn2.csproj" />
-		<Project Path="parser/tscn2.test/gdt.tscn2.test.csproj" />
+	<Folder Name="/gresource/"/>
+	<Folder Name="/gresource/tscn2/">
+		<Project Path="gresource/tscn2/parser/gdt.gresource.tscn2.parser.csproj"/>
+		<Project Path="gresource/tscn2/test/gdt.gresource.tscn2.test.csproj"/>
+		<Project Path="gresource/tscn2/test_godotproject/gdt.gresource.tscn2.test_godotproject.csproj"/>
 	</Folder>
 </Solution>

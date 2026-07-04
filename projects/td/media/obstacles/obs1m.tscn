@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ciurs8w8hadvu"]
+
+[ext_resource type="PackedScene" uid="uid://c0542g2dgv0oe" path="res://media/obstacles/obs1m.blend" id="1_af02p"]
+[ext_resource type="Script" uid="uid://2mkvs0tw8q3b" path="res://media/obstacles/Obstacles.cs" id="2_ba10y"]
+
+[node name="obs1m" unique_id=1670254129 instance=ExtResource("1_af02p")]
+script = ExtResource("2_ba10y")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." index="0" unique_id=1713893903]
+vertices = PackedVector3Array(-0.5, 0, -0.5, 0.5, 0, -0.5, 0.49981928, 0, 0.4996548, -0.5, 0, 0.5)
+avoidance_enabled = false

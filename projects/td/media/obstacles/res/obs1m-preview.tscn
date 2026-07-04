@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://0c213ru5yttc"]
+
+[ext_resource type="ArrayMesh" uid="uid://dx7lsyore2mal" path="res://media/obstacles/obs1m_Mesh.tres" id="1_doigg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxfjq"]
+resource_name = "preview"
+transparency = 4
+cull_mode = 2
+albedo_color = Color(0.004497572, 0.00306053, 0.3434055, 0.5)
+roughness = 0.5
+
+[node name="obs1m-preview" type="MeshInstance3D" unique_id=13721128]
+material_override = SubResource("StandardMaterial3D_uxfjq")
+mesh = ExtResource("1_doigg")

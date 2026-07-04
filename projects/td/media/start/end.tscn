@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://ddcxfe7iy4l72"]
+
+[ext_resource type="PackedScene" uid="uid://bxkymmnyvo6gs" path="res://media/start/end.blend" id="1_b16qq"]
+[ext_resource type="Script" uid="uid://besj3lm6qkio1" path="res://media/start/anim_autoplay.gd" id="2_pgdd7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j6hwb"]
+
+[node name="end" unique_id=149674122 instance=ExtResource("1_b16qq")]
+
+[node name="Cube" parent="." index="0" unique_id=1383351160]
+transform = Transform3D(0.4390148, 0.23381719, -0.8675226, 0.74844885, 0.43901494, 0.4970815, 0.4970815, -0.86752266, 0.017733853, 0, 0.5, 0)
+
+[node name="Area3D" type="Area3D" parent="Cube" index="0" unique_id=1125761708]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/Area3D" index="0" unique_id=221484047]
+shape = SubResource("BoxShape3D_j6hwb")
+
+[node name="AnimationPlayer" parent="." index="1" unique_id=1534870087]
+autoplay = &"CubeAction"
+script = ExtResource("2_pgdd7")

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://bdt35cc7hajjo"]
+
+[ext_resource type="PackedScene" uid="uid://bgsenk2wv1a51" path="res://media/block3/block3.blend" id="1_52x65"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sxqy0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tf8if"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_smbmp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_34pnl"]
+points = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Block3" type="Node3D" unique_id=1386712733]
+
+[node name="block3" parent="." unique_id=1512606046 instance=ExtResource("1_52x65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9665909, 0, 1.1879959)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="block3/Cube3" parent_id_path=PackedInt32Array(1512606046, 167392479) index="1" unique_id=2080704928]
+navigation_mesh = SubResource("NavigationMesh_sxqy0")
+
+[node name="Area3D" type="Area3D" parent="block3/Cube3" parent_id_path=PackedInt32Array(1512606046, 167392479) index="2" unique_id=391014361]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block3/Cube3/Area3D" unique_id=1345734449]
+shape = SubResource("BoxShape3D_tf8if")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block3/Cube1" parent_id_path=PackedInt32Array(1512606046, 895515849) index="0" unique_id=1005044584]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block3/Cube1/StaticBody3D" unique_id=103406522]
+shape = SubResource("BoxShape3D_smbmp")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="block3/Cube1_001" parent_id_path=PackedInt32Array(1512606046, 1974793235) index="0" unique_id=1895090566]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="block3/Cube1_001/StaticBody3D" unique_id=1119549064]
+shape = SubResource("ConvexPolygonShape3D_34pnl")
+
+[editable path="block3"]

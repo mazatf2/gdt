@@ -1,0 +1,5 @@
+﻿{
+	"scripts": {
+		"export": "godot-mono --export-debug \"Windows Desktop\" .export/win64-debug/td.exe --headless"
+	}
+}

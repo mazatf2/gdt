@@ -1,0 +1,606 @@
+{
+	"gd_scene": {
+		"format": -1,
+		"uid": null
+	},
+	"ext_resource": [],
+	"sub_resource": [],
+	"node": [
+		{
+			"name": "data1",
+			"type": "Node",
+			"parent": ".",
+			"unique_id": -1,
+			"properties": {}
+		},
+		{
+			"name": "rigidBody2d",
+			"type": "RigidBody2D",
+			"parent": "./rigidBody2d",
+			"unique_id": -1,
+			"properties": {
+				"editor_description": {
+					"name": "editor_description",
+					"type": 4,
+					"typeName": "String",
+					"data": "desc",
+					"debug1": "\u0022s:desc\u0022",
+					"debug2": "s:desc"
+				},
+				"material": {
+					"name": "material",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:test\u0022,\u0022blend_mode\u0022,\u0022i:0\u0022,\u0022light_mode\u0022,\u0022i:0\u0022,\u0022particles_animation\u0022,false,\u0022script\u0022,null],\u0022type\u0022:\u0022CanvasItemMaterial\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022CanvasItemMaterial\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:test\u0022,\u0022blend_mode\u0022,\u0022i:0\u0022,\u0022light_mode\u0022,\u0022i:0\u0022,\u0022particles_animation\u0022,false,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022CanvasItemMaterial\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:test\u0022, \u0022blend_mode\u0022, \u0022i:0\u0022, \u0022light_mode\u0022, \u0022i:0\u0022, \u0022particles_animation\u0022, false, \u0022script\u0022, \u003Cnull\u003E] }"
+				},
+				"position": {
+					"name": "position",
+					"type": 5,
+					"typeName": "Vector2",
+					"data": {
+						"X": -2.14,
+						"Y": 0.105
+					},
+					"debug1": "{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[-2.140000104904175,0.10499999672174454]}",
+					"debug2": "{ \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [-2.14000010490417, 0.10499999672174] }"
+				},
+				"rotation": {
+					"name": "rotation",
+					"type": 3,
+					"typeName": "Float",
+					"data": -28.248154,
+					"debug1": "\u0022f:-28.248154\u0022",
+					"debug2": "f:-28.248154"
+				},
+				"skew": {
+					"name": "skew",
+					"type": 3,
+					"typeName": "Float",
+					"data": 0.1605703,
+					"debug1": "\u0022f:0.1605703\u0022",
+					"debug2": "f:0.1605703"
+				},
+				"physics_material_override": {
+					"name": "physics_material_override",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,true,\u0022resource_name\u0022,\u0022s:named_local_toscene_path\u0022,\u0022friction\u0022,\u0022f:1.0\u0022,\u0022rough\u0022,true,\u0022bounce\u0022,\u0022f:0.0\u0022,\u0022absorbent\u0022,false,\u0022script\u0022,null],\u0022type\u0022:\u0022PhysicsMaterial\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022PhysicsMaterial\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,true,\u0022resource_name\u0022,\u0022s:named_local_toscene_path\u0022,\u0022friction\u0022,\u0022f:1.0\u0022,\u0022rough\u0022,true,\u0022bounce\u0022,\u0022f:0.0\u0022,\u0022absorbent\u0022,false,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022PhysicsMaterial\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, true, \u0022resource_name\u0022, \u0022s:named_local_toscene_path\u0022, \u0022friction\u0022, \u0022f:1.0\u0022, \u0022rough\u0022, true, \u0022bounce\u0022, \u0022f:0.0\u0022, \u0022absorbent\u0022, false, \u0022script\u0022, \u003Cnull\u003E] }"
+				},
+				"center_of_mass_mode": {
+					"name": "center_of_mass_mode",
+					"type": 2,
+					"typeName": "Int",
+					"data": 1,
+					"debug1": "\u0022i:1\u0022",
+					"debug2": "i:1"
+				},
+				"center_of_mass": {
+					"name": "center_of_mass",
+					"type": 5,
+					"typeName": "Vector2",
+					"data": {
+						"X": 294.87,
+						"Y": -0.4
+					},
+					"debug1": "{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[294.8699951171875,-0.4000000059604645]}",
+					"debug2": "{ \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [294.869995117188, -0.40000000596046] }"
+				},
+				"metadata/test": {
+					"name": "metadata/test",
+					"type": 4,
+					"typeName": "String",
+					"data": "key",
+					"debug1": "\u0022s:key\u0022",
+					"debug2": "s:key"
+				},
+				"metadata/clr": {
+					"name": "metadata/clr",
+					"type": 20,
+					"typeName": "Color",
+					"data": {
+						"R8": 98,
+						"G8": 128,
+						"B8": 45,
+						"A8": 213,
+						"H": 0.22677594,
+						"S": 0.6508992,
+						"V": 0.5000154,
+						"OkHslH": 0.35202485,
+						"OkHslS": 0.7735196,
+						"OkHslL": 0.4864211,
+						"Luminance": 0.45156246,
+						"R": 0.38263652,
+						"G": 0.5000154,
+						"B": 0.17455576,
+						"A": 0.8352941
+					},
+					"debug1": "{\u0022type\u0022:\u0022Color\u0022,\u0022args\u0022:[0.38263651728630066,0.500015377998352,0.17455576360225677,0.8352941274642944]}",
+					"debug2": "{ \u0022type\u0022: \u0022Color\u0022, \u0022args\u0022: [0.3826365172863, 0.50001537799835, 0.17455576360226, 0.83529412746429] }"
+				},
+				"metadata/res2": {
+					"name": "metadata/res2",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022original_name\u0022,\u0022s:\u0022,\u0022parent\u0022,\u0022i:-1\u0022,\u0022height\u0022,\u0022i:-1\u0022,\u0022xform\u0022,{\u0022args\u0022:[1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0],\u0022type\u0022:\u0022Transform3D\u0022},\u0022mesh\u0022,\u0022i:-1\u0022,\u0022camera\u0022,\u0022i:-1\u0022,\u0022skin\u0022,\u0022i:-1\u0022,\u0022skeleton\u0022,\u0022i:-1\u0022,\u0022position\u0022,{\u0022args\u0022:[0.0,0.0,0.0],\u0022type\u0022:\u0022Vector3\u0022},\u0022rotation\u0022,{\u0022args\u0022:[0.0,0.0,0.0,1.0],\u0022type\u0022:\u0022Quaternion\u0022},\u0022scale\u0022,{\u0022args\u0022:[1.0,1.0,1.0],\u0022type\u0022:\u0022Vector3\u0022},\u0022children\u0022,{\u0022args\u0022:[],\u0022type\u0022:\u0022PackedInt32Array\u0022},\u0022light\u0022,\u0022i:-1\u0022,\u0022visible\u0022,true,\u0022script\u0022,null],\u0022type\u0022:\u0022GLTFNode\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022GLTFNode\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022original_name\u0022,\u0022s:\u0022,\u0022parent\u0022,\u0022i:-1\u0022,\u0022height\u0022,\u0022i:-1\u0022,\u0022xform\u0022,{\u0022type\u0022:\u0022Transform3D\u0022,\u0022args\u0022:[1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0]},\u0022mesh\u0022,\u0022i:-1\u0022,\u0022camera\u0022,\u0022i:-1\u0022,\u0022skin\u0022,\u0022i:-1\u0022,\u0022skeleton\u0022,\u0022i:-1\u0022,\u0022position\u0022,{\u0022type\u0022:\u0022Vector3\u0022,\u0022args\u0022:[0.0,0.0,0.0]},\u0022rotation\u0022,{\u0022type\u0022:\u0022Quaternion\u0022,\u0022args\u0022:[0.0,0.0,0.0,1.0]},\u0022scale\u0022,{\u0022type\u0022:\u0022Vector3\u0022,\u0022args\u0022:[1.0,1.0,1.0]},\u0022children\u0022,{\u0022type\u0022:\u0022PackedInt32Array\u0022,\u0022args\u0022:[]},\u0022light\u0022,\u0022i:-1\u0022,\u0022visible\u0022,true,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022GLTFNode\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022original_name\u0022, \u0022s:\u0022, \u0022parent\u0022, \u0022i:-1\u0022, \u0022height\u0022, \u0022i:-1\u0022, \u0022xform\u0022, { \u0022type\u0022: \u0022Transform3D\u0022, \u0022args\u0022: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0] }, \u0022mesh\u0022, \u0022i:-1\u0022, \u0022camera\u0022, \u0022i:-1\u0022, \u0022skin\u0022, \u0022i:-1\u0022, \u0022skeleton\u0022, \u0022i:-1\u0022, \u0022position\u0022, { \u0022type\u0022: \u0022Vector3\u0022, \u0022args\u0022: [0.0, 0.0, 0.0] }, \u0022rotation\u0022, { \u0022type\u0022: \u0022Quaternion\u0022, \u0022args\u0022: [0.0, 0.0, 0.0, 1.0] }, \u0022scale\u0022, { \u0022type\u0022: \u0022Vector3\u0022, \u0022args\u0022: [1.0, 1.0, 1.0] }, \u0022children\u0022, { \u0022type\u0022: \u0022PackedInt32Array\u0022, \u0022args\u0022: [] }, \u0022light\u0022, \u0022i:-1\u0022, \u0022visible\u0022, true, \u0022script\u0022, \u003Cnull\u003E] }"
+				}
+			}
+		},
+		{
+			"name": "collisionShape2d",
+			"type": "CollisionShape2D",
+			"parent": "./rigidBody2d/collisionShape2d",
+			"unique_id": -1,
+			"properties": {
+				"shape": {
+					"name": "shape",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022custom_solver_bias\u0022,\u0022f:0.0\u0022,\u0022normal\u0022,{\u0022args\u0022:[0.0,-1.0],\u0022type\u0022:\u0022Vector2\u0022},\u0022distance\u0022,\u0022f:0.0\u0022,\u0022script\u0022,null],\u0022type\u0022:\u0022WorldBoundaryShape2D\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022WorldBoundaryShape2D\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022custom_solver_bias\u0022,\u0022f:0.0\u0022,\u0022normal\u0022,{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[0.0,-1.0]},\u0022distance\u0022,\u0022f:0.0\u0022,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022WorldBoundaryShape2D\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022custom_solver_bias\u0022, \u0022f:0.0\u0022, \u0022normal\u0022, { \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [0.0, -1.0] }, \u0022distance\u0022, \u0022f:0.0\u0022, \u0022script\u0022, \u003Cnull\u003E] }"
+				}
+			}
+		},
+		{
+			"name": "rigidBody2d2",
+			"type": "RigidBody2D",
+			"parent": "./rigidBody2d2",
+			"unique_id": -1,
+			"properties": {
+				"material": {
+					"name": "material",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:test\u0022,\u0022blend_mode\u0022,\u0022i:0\u0022,\u0022light_mode\u0022,\u0022i:0\u0022,\u0022particles_animation\u0022,false,\u0022script\u0022,null],\u0022type\u0022:\u0022CanvasItemMaterial\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022CanvasItemMaterial\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:test\u0022,\u0022blend_mode\u0022,\u0022i:0\u0022,\u0022light_mode\u0022,\u0022i:0\u0022,\u0022particles_animation\u0022,false,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022CanvasItemMaterial\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:test\u0022, \u0022blend_mode\u0022, \u0022i:0\u0022, \u0022light_mode\u0022, \u0022i:0\u0022, \u0022particles_animation\u0022, false, \u0022script\u0022, \u003Cnull\u003E] }"
+				},
+				"position": {
+					"name": "position",
+					"type": 5,
+					"typeName": "Vector2",
+					"data": {
+						"X": -2.14,
+						"Y": 0.105
+					},
+					"debug1": "{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[-2.140000104904175,0.10499999672174454]}",
+					"debug2": "{ \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [-2.14000010490417, 0.10499999672174] }"
+				},
+				"rotation": {
+					"name": "rotation",
+					"type": 3,
+					"typeName": "Float",
+					"data": -28.248154,
+					"debug1": "\u0022f:-28.248154\u0022",
+					"debug2": "f:-28.248154"
+				},
+				"skew": {
+					"name": "skew",
+					"type": 3,
+					"typeName": "Float",
+					"data": 0.1605703,
+					"debug1": "\u0022f:0.1605703\u0022",
+					"debug2": "f:0.1605703"
+				},
+				"physics_material_override": {
+					"name": "physics_material_override",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,true,\u0022resource_name\u0022,\u0022s:named_local_toscene_path\u0022,\u0022friction\u0022,\u0022f:1.0\u0022,\u0022rough\u0022,true,\u0022bounce\u0022,\u0022f:0.0\u0022,\u0022absorbent\u0022,false,\u0022script\u0022,null],\u0022type\u0022:\u0022PhysicsMaterial\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022PhysicsMaterial\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,true,\u0022resource_name\u0022,\u0022s:named_local_toscene_path\u0022,\u0022friction\u0022,\u0022f:1.0\u0022,\u0022rough\u0022,true,\u0022bounce\u0022,\u0022f:0.0\u0022,\u0022absorbent\u0022,false,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022PhysicsMaterial\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, true, \u0022resource_name\u0022, \u0022s:named_local_toscene_path\u0022, \u0022friction\u0022, \u0022f:1.0\u0022, \u0022rough\u0022, true, \u0022bounce\u0022, \u0022f:0.0\u0022, \u0022absorbent\u0022, false, \u0022script\u0022, \u003Cnull\u003E] }"
+				},
+				"center_of_mass_mode": {
+					"name": "center_of_mass_mode",
+					"type": 2,
+					"typeName": "Int",
+					"data": 1,
+					"debug1": "\u0022i:1\u0022",
+					"debug2": "i:1"
+				},
+				"center_of_mass": {
+					"name": "center_of_mass",
+					"type": 5,
+					"typeName": "Vector2",
+					"data": {
+						"X": 294.87,
+						"Y": -0.4
+					},
+					"debug1": "{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[294.8699951171875,-0.4000000059604645]}",
+					"debug2": "{ \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [294.869995117188, -0.40000000596046] }"
+				}
+			}
+		},
+		{
+			"name": "collisionShape2d",
+			"type": "CollisionShape2D",
+			"parent": "./rigidBody2d2/collisionShape2d",
+			"unique_id": -1,
+			"properties": {
+				"shape": {
+					"name": "shape",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022custom_solver_bias\u0022,\u0022f:0.0\u0022,\u0022normal\u0022,{\u0022args\u0022:[0.0,-1.0],\u0022type\u0022:\u0022Vector2\u0022},\u0022distance\u0022,\u0022f:0.0\u0022,\u0022script\u0022,null],\u0022type\u0022:\u0022WorldBoundaryShape2D\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022WorldBoundaryShape2D\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022custom_solver_bias\u0022,\u0022f:0.0\u0022,\u0022normal\u0022,{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[0.0,-1.0]},\u0022distance\u0022,\u0022f:0.0\u0022,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022WorldBoundaryShape2D\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022custom_solver_bias\u0022, \u0022f:0.0\u0022, \u0022normal\u0022, { \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [0.0, -1.0] }, \u0022distance\u0022, \u0022f:0.0\u0022, \u0022script\u0022, \u003Cnull\u003E] }"
+				}
+			}
+		},
+		{
+			"name": "rigidBody2d3",
+			"type": "RigidBody2D",
+			"parent": "./rigidBody2d3",
+			"unique_id": -1,
+			"properties": {
+				"material": {
+					"name": "material",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,true,\u0022resource_name\u0022,\u0022s:test\u0022,\u0022shader\u0022,null,\u0022script\u0022,null],\u0022type\u0022:\u0022ShaderMaterial\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022ShaderMaterial\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,true,\u0022resource_name\u0022,\u0022s:test\u0022,\u0022shader\u0022,null,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022ShaderMaterial\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, true, \u0022resource_name\u0022, \u0022s:test\u0022, \u0022shader\u0022, \u003Cnull\u003E, \u0022script\u0022, \u003Cnull\u003E] }"
+				},
+				"use_parent_material": {
+					"name": "use_parent_material",
+					"type": 1,
+					"typeName": "Bool",
+					"data": true,
+					"debug1": "true",
+					"debug2": "true"
+				},
+				"position": {
+					"name": "position",
+					"type": 5,
+					"typeName": "Vector2",
+					"data": {
+						"X": -2.14,
+						"Y": 0.105
+					},
+					"debug1": "{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[-2.140000104904175,0.10499999672174454]}",
+					"debug2": "{ \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [-2.14000010490417, 0.10499999672174] }"
+				},
+				"rotation": {
+					"name": "rotation",
+					"type": 3,
+					"typeName": "Float",
+					"data": -28.248154,
+					"debug1": "\u0022f:-28.248154\u0022",
+					"debug2": "f:-28.248154"
+				},
+				"skew": {
+					"name": "skew",
+					"type": 3,
+					"typeName": "Float",
+					"data": 0.1605703,
+					"debug1": "\u0022f:0.1605703\u0022",
+					"debug2": "f:0.1605703"
+				},
+				"physics_material_override": {
+					"name": "physics_material_override",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022friction\u0022,\u0022f:1.0\u0022,\u0022rough\u0022,false,\u0022bounce\u0022,\u0022f:0.0\u0022,\u0022absorbent\u0022,false,\u0022script\u0022,null],\u0022type\u0022:\u0022PhysicsMaterial\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022PhysicsMaterial\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022friction\u0022,\u0022f:1.0\u0022,\u0022rough\u0022,false,\u0022bounce\u0022,\u0022f:0.0\u0022,\u0022absorbent\u0022,false,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022PhysicsMaterial\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022friction\u0022, \u0022f:1.0\u0022, \u0022rough\u0022, false, \u0022bounce\u0022, \u0022f:0.0\u0022, \u0022absorbent\u0022, false, \u0022script\u0022, \u003Cnull\u003E] }"
+				},
+				"center_of_mass_mode": {
+					"name": "center_of_mass_mode",
+					"type": 2,
+					"typeName": "Int",
+					"data": 1,
+					"debug1": "\u0022i:1\u0022",
+					"debug2": "i:1"
+				},
+				"center_of_mass": {
+					"name": "center_of_mass",
+					"type": 5,
+					"typeName": "Vector2",
+					"data": {
+						"X": 294.87,
+						"Y": -0.4
+					},
+					"debug1": "{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[294.8699951171875,-0.4000000059604645]}",
+					"debug2": "{ \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [294.869995117188, -0.40000000596046] }"
+				}
+			}
+		},
+		{
+			"name": "collisionShape2d",
+			"type": "CollisionShape2D",
+			"parent": "./rigidBody2d3/collisionShape2d",
+			"unique_id": -1,
+			"properties": {
+				"shape": {
+					"name": "shape",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022custom_solver_bias\u0022,\u0022f:0.0\u0022,\u0022normal\u0022,{\u0022args\u0022:[0.0,-1.0],\u0022type\u0022:\u0022Vector2\u0022},\u0022distance\u0022,\u0022f:0.0\u0022,\u0022script\u0022,null],\u0022type\u0022:\u0022WorldBoundaryShape2D\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022WorldBoundaryShape2D\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022custom_solver_bias\u0022,\u0022f:0.0\u0022,\u0022normal\u0022,{\u0022type\u0022:\u0022Vector2\u0022,\u0022args\u0022:[0.0,-1.0]},\u0022distance\u0022,\u0022f:0.0\u0022,\u0022script\u0022,null]}",
+					"debug2": "{ \u0022type\u0022: \u0022WorldBoundaryShape2D\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022custom_solver_bias\u0022, \u0022f:0.0\u0022, \u0022normal\u0022, { \u0022type\u0022: \u0022Vector2\u0022, \u0022args\u0022: [0.0, -1.0] }, \u0022distance\u0022, \u0022f:0.0\u0022, \u0022script\u0022, \u003Cnull\u003E] }"
+				}
+			}
+		},
+		{
+			"name": "boneTwistDisperser3d",
+			"type": "BoneTwistDisperser3D",
+			"parent": "./boneTwistDisperser3d",
+			"unique_id": -1,
+			"properties": {
+				"setting_count": {
+					"name": "setting_count",
+					"type": 2,
+					"typeName": "Int",
+					"data": 1,
+					"debug1": "\u0022i:1\u0022",
+					"debug2": "i:1"
+				},
+				"settings/0/root_bone_name": {
+					"name": "settings/0/root_bone_name",
+					"type": 4,
+					"typeName": "String",
+					"data": "",
+					"debug1": "\u0022s:\u0022",
+					"debug2": "s:"
+				},
+				"settings/0/root_bone": {
+					"name": "settings/0/root_bone",
+					"type": 2,
+					"typeName": "Int",
+					"data": -1,
+					"debug1": "\u0022i:-1\u0022",
+					"debug2": "i:-1"
+				},
+				"settings/0/end_bone_name": {
+					"name": "settings/0/end_bone_name",
+					"type": 4,
+					"typeName": "String",
+					"data": "",
+					"debug1": "\u0022s:\u0022",
+					"debug2": "s:"
+				},
+				"settings/0/end_bone": {
+					"name": "settings/0/end_bone",
+					"type": 2,
+					"typeName": "Int",
+					"data": -1,
+					"debug1": "\u0022i:-1\u0022",
+					"debug2": "i:-1"
+				},
+				"settings/0/twist_from_rest": {
+					"name": "settings/0/twist_from_rest",
+					"type": 1,
+					"typeName": "Bool",
+					"data": true,
+					"debug1": "true",
+					"debug2": "true"
+				},
+				"settings/0/disperse_mode": {
+					"name": "settings/0/disperse_mode",
+					"type": 2,
+					"typeName": "Int",
+					"data": 0,
+					"debug1": "\u0022i:0\u0022",
+					"debug2": "i:0"
+				},
+				"settings/0/joint_count": {
+					"name": "settings/0/joint_count",
+					"type": 2,
+					"typeName": "Int",
+					"data": 0,
+					"debug1": "\u0022i:0\u0022",
+					"debug2": "i:0"
+				}
+			}
+		},
+		{
+			"name": "skeleton3d",
+			"type": "Skeleton3D",
+			"parent": "./skeleton3d",
+			"unique_id": -1,
+			"properties": {
+				"metadata/_edit_lock_": {
+					"name": "metadata/_edit_lock_",
+					"type": 1,
+					"typeName": "Bool",
+					"data": true,
+					"debug1": "true",
+					"debug2": "true"
+				}
+			}
+		},
+		{
+			"name": "physicalBone3d",
+			"type": "PhysicalBone3D",
+			"parent": "./skeleton3d/physicalBone3d",
+			"unique_id": -1,
+			"properties": {
+				"metadata/_edit_lock_": {
+					"name": "metadata/_edit_lock_",
+					"type": 1,
+					"typeName": "Bool",
+					"data": true,
+					"debug1": "true",
+					"debug2": "true"
+				}
+			}
+		},
+		{
+			"name": "node",
+			"type": "Node",
+			"parent": "./node",
+			"unique_id": -1,
+			"properties": {
+				"script": {
+					"name": "script",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022],\u0022type\u0022:\u0022GDScript\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022GDScript\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022]}",
+					"debug2": "{ \u0022type\u0022: \u0022GDScript\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022script/source\u0022, \u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022] }"
+				},
+				"export3": {
+					"name": "export3",
+					"type": 2,
+					"typeName": "Int",
+					"data": 2,
+					"debug1": "\u0022i:2\u0022",
+					"debug2": "i:2"
+				},
+				"export4": {
+					"name": "export4",
+					"type": 1,
+					"typeName": "Bool",
+					"data": false,
+					"debug1": "false",
+					"debug2": "false"
+				},
+				"export7": {
+					"name": "export7",
+					"type": 22,
+					"typeName": "NodePath",
+					"data": {
+						"IsEmpty": false
+					},
+					"debug1": "\u0022np:..\u0022",
+					"debug2": "np:.."
+				}
+			}
+		},
+		{
+			"name": "node2",
+			"type": "",
+			"parent": "./node2",
+			"unique_id": -1,
+			"properties": {
+				"editor_description": {
+					"name": "editor_description",
+					"type": 4,
+					"typeName": "String",
+					"data": "0",
+					"debug1": "\u0022s:0\u0022",
+					"debug2": "s:0"
+				}
+			}
+		},
+		{
+			"name": "node3",
+			"type": "",
+			"parent": "./node3",
+			"unique_id": -1,
+			"properties": {
+				"editor_description": {
+					"name": "editor_description",
+					"type": 4,
+					"typeName": "String",
+					"data": "0\n\n233w\n11\nadsa\n\n[node name=\u0022node\u0022 parent=\u0022node3\u0022 index=\u00220\u0022 unique_id=578635965]\n\n",
+					"debug1": "\u0022s:0\\n\\n233w\\n11\\nadsa\\n\\n[node name=\\\u0022node\\\u0022 parent=\\\u0022node3\\\u0022 index=\\\u00220\\\u0022 unique_id=578635965]\\n\\n\u0022",
+					"debug2": "s:0\n\n233w\n11\nadsa\n\n[node name=\u0022node\u0022 parent=\u0022node3\u0022 index=\u00220\u0022 unique_id=578635965]\n\n"
+				}
+			}
+		},
+		{
+			"name": "node",
+			"type": "",
+			"parent": "./node3/node",
+			"unique_id": -1,
+			"properties": {
+				"editor_description": {
+					"name": "editor_description",
+					"type": 4,
+					"typeName": "String",
+					"data": "1",
+					"debug1": "\u0022s:1\u0022",
+					"debug2": "s:1"
+				}
+			}
+		},
+		{
+			"name": "node",
+			"type": "",
+			"parent": "./node3/node/node",
+			"unique_id": -1,
+			"properties": {
+				"editor_description": {
+					"name": "editor_description",
+					"type": 4,
+					"typeName": "String",
+					"data": "2",
+					"debug1": "\u0022s:2\u0022",
+					"debug2": "s:2"
+				}
+			}
+		},
+		{
+			"name": "node4",
+			"type": "",
+			"parent": "./node4",
+			"unique_id": -1,
+			"properties": {
+				"editor_description": {
+					"name": "editor_description",
+					"type": 4,
+					"typeName": "String",
+					"data": "1\n1\n!\u0022#\u00A4%\u0026/()=?\u0060\\^*,.-/*-,\u00A7",
+					"debug1": "\u0022s:1\\n1\\n!\\\u0022#\u00A4%\u0026/()=?\u0060\\\\^*,.-/*-,\u00A7\u0022",
+					"debug2": "s:1\n1\n!\u0022#\u00A4%\u0026/()=?\u0060\\^*,.-/*-,\u00A7"
+				}
+			}
+		},
+		{
+			"name": "node5",
+			"type": "Node",
+			"parent": "./node5",
+			"unique_id": -1,
+			"properties": {
+				"script": {
+					"name": "script",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022],\u0022type\u0022:\u0022GDScript\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022GDScript\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022]}",
+					"debug2": "{ \u0022type\u0022: \u0022GDScript\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022script/source\u0022, \u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022] }"
+				}
+			}
+		},
+		{
+			"name": "node",
+			"type": "Node",
+			"parent": "./node5/node",
+			"unique_id": -1,
+			"properties": {
+				"script": {
+					"name": "script",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022],\u0022type\u0022:\u0022GDScript\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022GDScript\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022]}",
+					"debug2": "{ \u0022type\u0022: \u0022GDScript\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022script/source\u0022, \u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022] }"
+				}
+			}
+		},
+		{
+			"name": "node",
+			"type": "Node",
+			"parent": "./node5/node/node",
+			"unique_id": -1,
+			"properties": {
+				"script": {
+					"name": "script",
+					"type": 24,
+					"typeName": "Object",
+					"data": "{\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022],\u0022type\u0022:\u0022GDScript\u0022}",
+					"debug1": "{\u0022type\u0022:\u0022GDScript\u0022,\u0022props\u0022:[\u0022resource_local_to_scene\u0022,false,\u0022resource_name\u0022,\u0022s:\u0022,\u0022script/source\u0022,\u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022]}",
+					"debug2": "{ \u0022type\u0022: \u0022GDScript\u0022, \u0022props\u0022: [\u0022resource_local_to_scene\u0022, false, \u0022resource_name\u0022, \u0022s:\u0022, \u0022script/source\u0022, \u0022s:extends Node\\n@export var export1 = 1\\n@export var export2:bool = true\\n@export var export3 = 1\\n@export var export4:bool = true\\n@export var export5:int\\n@export var export6:bool\\n@export var export7:Node = Button.new()\\n@export var export8:bool\\n\\n\\nfunc _on_ready() -\u003E void:\\n\\tpass # Replace with function body.\\n\u0022] }"
+				}
+			}
+		}
+	],
+	"connection": []
+}

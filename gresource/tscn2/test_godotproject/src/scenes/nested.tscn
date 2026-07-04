@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://boffxld3aagpt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2qqnr"]
+albedo_color = Color(0.062030405, 0.30777705, 0.4078194, 1)
+metallic = 0.1
+metallic_specular = 0.1
+emission_enabled = true
+emission = Color(0.44468936, 0.46204126, 0.4694441, 1)
+
+[node name="Box" type="CSGBox3D" unique_id=1817952199]
+material_override = SubResource("StandardMaterial3D_2qqnr")
+size = Vector3(2, 2, 2)
+
+[node name="Box" type="CSGBox3D" parent="." unique_id=1136770976]
+editor_description = "z8"
+transform = Transform3D(1.9999999, 0, 0, 0, 2, 0, 0, 0, 1.9999999, 0, 0, 8)
+material_override = SubResource("StandardMaterial3D_2qqnr")
+size = Vector3(2, 2, 2)
+
+[node name="Box2" type="CSGBox3D" parent="Box" unique_id=917799074]
+editor_description = "x4 z-4"
+transform = Transform3D(0.99999964, 0, 0, 0, 1, 0, 0, 0, 0.99999964, 4, 0, -4)
+material_override = SubResource("StandardMaterial3D_2qqnr")
+size = Vector3(2, 2, 2)
+
+[node name="Box3" type="CSGBox3D" parent="Box/Box2" unique_id=1820385753]
+editor_description = "x-4 y4"
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, -4, 4, 0)
+material_override = SubResource("StandardMaterial3D_2qqnr")
+size = Vector3(2, 2, 2)

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ddt2kqmwt4xyd"]
+
+[sub_resource type="GDScript" id="GDScript_qb01i"]
+script/source = "@tool extends Node
+
+@export var _temp := 0.1
+@export var temp := _temp
+
+@export var _temp2 := 0.1 + 0.2
+@export var temp2 := _temp2
+
+func _ready() -> void:
+	var t:= Transform3D(
+		Vector3(1.4142135, 0, 1.4142135),
+		Vector3(0, 2, 0),
+		Vector3(-1.4142135, 0, 1.4142135),
+		Vector3(0, 0, 0)
+		)
+	var scale = t.basis.get_scale()
+	breakpoint
+	pass
+"
+
+[node name="Node" type="Node" unique_id=468250937]
+
+[node name="node export pos rot scale" type="Node3D" parent="." unique_id=518238330]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0030179, 0, 0)
+script = SubResource("GDScript_qb01i")
+temp = 0.1
+temp2 = 0.30000000000000004
