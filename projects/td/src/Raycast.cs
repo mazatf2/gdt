@@ -26,14 +26,14 @@ public partial class Misc {
 	}
 }
 
-public record Hit3D(Godot.Collections.Dictionary hit) {
-	public Vector3 Position => hit["position"].AsVector3();
-	public Vector3 Normal => hit["normal"].AsVector3();
-	public Variant FaceIndex => hit["face_index"];
+public record Hit3D(Godot.Collections.Dictionary Hit) {
+	public Vector3 Position() => Hit["position"].AsVector3();
+	public Vector3 Normal() => Hit["normal"].AsVector3();
+	public Variant FaceIndex() => Hit["face_index"];
 
-	public Variant Collider => hit["collider"];
-	public Variant ColliderId => hit["collider_id"];
-	public Variant Shape => hit["shape"];
+	public Variant Collider() => Hit["collider"];
+	public Variant ColliderId() => Hit["collider_id"];
+	public Variant Shape() => Hit["shape"];
 
-	public Rid Rid => hit["rid"].AsRid();
+	public Rid Rid() => Hit["rid"].AsRid();
 }

@@ -37,10 +37,11 @@ public partial class LookAtCam {
 		}
 	}
 
-	public void Process(double _delta) {
+	public void Process(float _delta) {
 		var needsCb = cam == null || target == null;
 		if (needsCb) { return; }
 
+		if(cam.Current == false) return;
 		var distance = cam.GlobalPosition.DistanceTo(target.GlobalPosition) < 0.01;
 		if (distance) {
 			cam.Position = cam.Position with { Y = cam.Position.Y + 0.01f };

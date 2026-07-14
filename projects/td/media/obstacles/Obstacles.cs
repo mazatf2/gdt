@@ -14,6 +14,7 @@ public partial class Obstacles : Node3D {
 			var srcFilePath = gdt.shared.Src.GetFilePath();
 			var srcDir = Path.GetDirectoryName(srcFilePath);
 			PreviewFilePath = Path.Join(srcDir, ImportScriptObstacles.PreviewFilePath(this.Name));
+			Log.LastCall("obstacles:debug", "set PreviewFilePath");
 		}
 	}
 }

@@ -1,16 +1,12 @@
 ﻿using System.Diagnostics;
 using System.Globalization;
+using System.Text;
 using gdt.projects.td.media.npc;
 using Godot;
 using gdt.shared;
 using gdt.shared._3d;
 
 namespace gdt.projects.td;
-
-class State {
-	private Camera3D cam;
-	private Marker3D lookAt;
-}
 
 class Dispose {
 	internal Area3D area;
@@ -23,12 +19,6 @@ public partial class Main : Godot.Control {
 	private LookAtCam? lookAtCam;
 
 	private Dispose _dispose = new();
-	State _state = new State();
-
-	public Main() {
-		CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
-		CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.InvariantCulture;
-	}
 
 	public override void _EnterTree() {
 		lookAtCam = new LookAtCam((cam, lookAt), (props) => {
@@ -49,11 +39,9 @@ public partial class Main : Godot.Control {
 		_stats = new Stats(128, 16, this);
 		_spawnPoint = GetNode<Node3D>("start");
 		_end = GetNode<Node3D>("end");
-		_npc = GetNode<Node3D>("%fast");
 		_navigation = GetNode<NavigationRegion3D>("NavigationRegion3D");
 		Debug.Assert(_spawnPoint != null);
-		Debug.Assert(_npc != null);
-		
+
 		var gridMap = GetNode<GridMap>("%GridMap");
 		var areaCon = GetNode<Node3D>("%areaCon");
 		areaCon.Position = gridMap.Position;
@@ -65,6 +53,7 @@ public partial class Main : Godot.Control {
 		_dupesObs1.Position = Vector3.Zero;
 		_dupesObs1Preview = dupes.GetNode<Node3D>("obs1m-preview");
 		_dupesObs1Preview.Position = Vector3.Zero;
+		_npc = dupes.GetNode<Node3D>("npc");
 
 		_dispose.area = new Area3D() {
 			CollisionLayer = (uint)Project.Physics3DLayer.Placement,
@@ -121,16 +110,18 @@ public partial class Main : Godot.Control {
 
 	public override void _UnhandledInput(InputEvent _ev) {
 		if (_ev is InputEventMouseButton ev) {
-			if(ev.Pressed == false){return;}
-			var btn = MouseButtonMask.Left;
-			if ((ev.ButtonMask & btn) > 0) {
+			if (ev.Pressed == false) {
+				return;
+			}
+
+			if (ev.ButtonIndex == MouseButton.Left) {
 				var hit = Misc.CameraPick((viewport: GetViewport(),
 						flags: Project.Physics3DLayer.Placement,
 						queryMutate: query
 					));
 				if (hit == null) { return; }
 
-				var col = hit.Collider.As<Area3D>();
+				var col = hit.Collider().As<Area3D>();
 				col.SetMeta("isUse", true);
 				var dup = (Node3D)_dupesObs1.Duplicate();
 
@@ -139,14 +130,14 @@ public partial class Main : Godot.Control {
 				dup.GlobalPosition = col.GlobalPosition;
 				_navigation.BakeNavigationMesh();
 			}
-			else if ((ev.ButtonMask & MouseButtonMask.Right) > 0) {
+			else if (ev.ButtonIndex == MouseButton.Right) {
 				var hit = Misc.CameraPick((viewport: GetViewport(),
 						flags: Project.Physics3DLayer.Placement,
 						queryMutate: query
 					));
 				if (hit == null) { return; }
 
-				var col = hit.Collider.As<Area3D>();
+				var col = hit.Collider().As<Area3D>();
 				col.SetMeta("isUse", true);
 
 				var dup = _dupesObs1Preview;
@@ -164,12 +155,12 @@ public partial class Main : Godot.Control {
 				timeEnd("npc", "spawn 6");
 			}
 		}
-		else if (_ev is InputEventMouseMotion ev2) {
-		}
-		//_ev.Dispose(); //needed?
+
+		_ev.Dispose(); //needed?
 	}
 
-	public override void _Process(double delta) {
+	public override void _Process(double d) {
+		var delta = (float)d;
 		lookAtCam?.Process(delta);
 		_stats?.Process();
 		QueueRedraw();
@@ -177,6 +168,8 @@ public partial class Main : Godot.Control {
 
 	public override void _Draw() {
 		_stats?.Draw();
+		//var stateDebug = GetNode<Label>("stateDebug");
+		//stateDebug.Text = State.ToTxt();
 	}
 
 	public override void _ExitTree() {
@@ -189,7 +182,7 @@ public partial class Main : Godot.Control {
 }
 
 class Spawner {
-	public static readonly List<Npc> ListNpc = Enumerable.Repeat(new Npc() { CanReUse = true, }, 12).ToList();
+	public static readonly List<Npc> ListNpc = Enumerable.Repeat(new Npc() { CanReUse = true, }, 20).ToList();
 
 	public static void Spawn(in (Node3D spawnPoint, Node3D endPoint, Node3D npc, int count) props /*,in Action<(Npc npc, bool t)> cb*/) {
 		for (var i = 0; i < props.count; i++) {
@@ -206,7 +199,6 @@ class Spawner {
 			npc.GlobalPosition = props.spawnPoint.GlobalPosition;
 
 			npc.NavAgent.TargetPosition = props.endPoint.GlobalPosition;
-
 
 			//cb((npc, true));
 		}

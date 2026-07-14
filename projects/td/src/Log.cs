@@ -32,7 +32,7 @@ public static class Log {
 	var n = f.Select(i => i.Name);
 	var c = string.Join(',', n);
 	*/
-	private static readonly string[] colors = [
+	private static readonly string[] colorsArr = [
 		Red, Green, Yellow, Blue, Magenta, Cyan, BrightBlack, BrightRed, BrightGreen, BrightYellow, BrightBlue, BrightMagenta, BrightCyan,
 	];
 
@@ -54,7 +54,7 @@ public static class Log {
 			_ => Magenta
 		};
 		var i = id[0];
-		var idColor = colors[i % colors.Length];
+		var idColor = colorsArr[i % colorsArr.Length];
 		Console.WriteLine($"{idColor}{id} {defaultColor}{string.Join(' ', msg)} {diffColor}[{diffStr}] [{frames:F1}]{defaultColor}");
 	}
 
@@ -71,10 +71,10 @@ public static class Log {
 				<= 1000f / 60f * 1 => Green,
 				<= 1000f / 60f * 2 => Yellow,
 				<= 1000f / 60f * 3 => Red,
-				_ => Magenta
+				_ => Magenta,
 			};
 			var i = id[0];
-			var idColor = colors[i % colors.Length];
+			var idColor = colorsArr[i % colorsArr.Length];
 			Console.WriteLine($"{idColor}{id} {defaultColor}{string.Join(' ', msg)} {diffColor}[{diffStr}] [{frames:F1}]{defaultColor}");
 		}
 

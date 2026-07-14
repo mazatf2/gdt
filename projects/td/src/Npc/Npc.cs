@@ -6,7 +6,7 @@ namespace gdt.projects.td.media.npc;
 
 [Tool]
 public partial class Npc : Node3D {
-	[Export] public NavigationAgent3D? NavAgent = null;
+	[Export] public NavigationAgent3D? NavAgent;
 	[Export] private float _characterSpeed = 8.0f;
 	[Export] private RayCast3D? _raycast {get; set;}
 
@@ -19,7 +19,7 @@ public partial class Npc : Node3D {
 			});
 			AddChild(NavAgent);
 			NavAgent.Owner = this;
-			Log.LastCall("npc:debug", "add nav agent");
+			Log.LastCall("npc:debug", "add NavAgent");
 		}
 
 		if (_raycast == null) {
@@ -33,7 +33,7 @@ public partial class Npc : Node3D {
 			});
 			AddChild(_raycast);
 			_raycast.Owner = this;
-			Log.LastCall("npc:debug", "add raycast");
+			Log.LastCall("npc:debug", "add _raycast");
 		}
 
 		NavAgent.NavigationFinished += OnNavAgentOnNavigationFinished;

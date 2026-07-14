@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c06hy5vuela8a"]
+
+[ext_resource type="PackedScene" uid="uid://crf6hg4vo3y6v" path="res://media/npc/fast.tscn" id="1_k0xt6"]
+[ext_resource type="Script" uid="uid://bpaiwb4qrergw" path="res://src/Npc/Npc.cs" id="1_prhqs"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mr6lx"]
+size = Vector3(0.50000006, 1.6, 0.20000015)
+
+[node name="npc" type="Node3D" unique_id=1640625947 node_paths=PackedStringArray("NavAgent", "_raycast")]
+script = ExtResource("1_prhqs")
+NavAgent = NodePath("NavigationAgent3D")
+_raycast = NodePath("")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1266993694]
+debug_enabled = true
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=223544926]
+transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0.010737426, 0.8, 0.04281791)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=663952251]
+shape = SubResource("BoxShape3D_mr6lx")
+
+[node name="fast" parent="." unique_id=1238479540 instance=ExtResource("1_k0xt6")]

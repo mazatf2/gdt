@@ -84,6 +84,9 @@ public class GetSet<T>(T value) {
 	//}
 
 	public override string ToString() {
+		if (_value is null) {
+			return "null";
+		}
 		return _value.ToString();
 	}
 }

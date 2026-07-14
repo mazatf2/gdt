@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://courcggshtsal"]
+
+[ext_resource type="Script" uid="uid://bix4aurl2p570" path="res://src/Player/Player.cs" id="1_1gn11"]
+[ext_resource type="PackedScene" uid="uid://crf6hg4vo3y6v" path="res://media/npc/fast.tscn" id="2_fdvkn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sxqy0"]
+
+[node name="Player" type="Node3D" unique_id=1659542255]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." unique_id=2072411467 node_paths=PackedStringArray("cam")]
+script = ExtResource("1_1gn11")
+cam = NodePath("Camera3D")
+
+[node name="fast" parent="CharacterBody3D" unique_id=1238479540 instance=ExtResource("2_fdvkn")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D" unique_id=1560138476]
+shape = SubResource("BoxShape3D_sxqy0")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D" unique_id=910793738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3, 0)
+current = true
+near = 0.2
+far = 200.0
