@@ -1,0 +1,13 @@
+<Project Sdk="Godot.NET.Sdk/4.7.1">
+	<PropertyGroup>
+		<TargetFramework>net10.0</TargetFramework>
+		<EnableDynamicLoading>true</EnableDynamicLoading>
+		<RootNamespace>gdt.gresource.scn.viewscn</RootNamespace>
+	</PropertyGroup>
+	<!-- added by 2dog convert: properties 2dog hosts need that were not already set -->
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<DefineConstants>$(DefineConstants);LIBGODOT_ENABLED</DefineConstants>
+		<DefaultItemExcludes>$(DefaultItemExcludes);viewscn.2dog/**;viewscn.web/**;viewscn.tests/**</DefaultItemExcludes>
+	</PropertyGroup>
+</Project>

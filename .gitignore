@@ -1,17 +1,20 @@
-﻿**/.idea
-**/.vscode
+﻿.idea/
+.vscode/
+.vs/
 
-**/*.user
+*.user
 
-**/.bin
-**/.export
-**/.build
-**/.godot
+.bin/
+.export/
+.build/
+.godot/
 
-**/artifacts
-**/bin
-**/obj
-**/nupkg
+artifacts/
+bin/
+obj/
+nupkg/
+AppBundle/
+Properties/
 
 *.blend
 *.blend1

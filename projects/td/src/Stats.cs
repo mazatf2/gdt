@@ -1,9 +1,10 @@
 ﻿using System.Diagnostics;
+using System.Text;
 using Godot;
 
 namespace gdt.projects.td;
 
-enum Drawmode {
+public enum Drawmode {
 	Fps,
 	Ms,
 	MemTotal,
@@ -11,116 +12,115 @@ enum Drawmode {
 	Max,
 }
 
-record StatsStateEntry(int Size, Drawmode Type) {
-	public float[] data = new float[Size];
-	public float min;
-	public float max;
-	public float allTimeMin;
-	public float allTimeMax;
+public record StatsStoreEntry(int Size, Drawmode Type, Label Control, bool IsActive) {
+	public Queue<float> Data = [];
+	public float Min;
+	public float Max;
+	public float AllTimeMin;
+	public float AllTimeMax;
+	public bool IsActive = IsActive;
 
-	public string ToTxt() {
-		if (Type == Drawmode.Fps) {
-			return $"{data[Size - 1]:F0} {Type} {min:f0}-{max:f0} {allTimeMin:f0}-{allTimeMax:f0}";
+	private Vector2 _from2 = Vector2.Zero;
+	private Vector2 _to2;
+
+	public void Draw(float val, float maxValue) {
+		Min = float.Min(Min, val);
+		Max = float.Max(Max, val);
+
+		Data.Enqueue(val);
+		if (Data.Count >= Size) {
+			Data.Dequeue();
 		}
 
-		return $"{data[Size - 1]:F1} {Type} {min:f1}-{max:f1} {allTimeMin:f1}-{allTimeMax:f1}";
+		if (!IsActive) {
+			return;
+		}
+
+		var i = 0;
+		foreach (var value in Data) {
+			_from2.X = i * 8;
+			_to2.X = i * 8;
+			_to2.Y = value;
+			Control.DrawLine(_from2, _to2, Colors.Green, 1f);
+			i++;
+		}
+
+		var txt = ToTxt(val);
+		Control.DrawString(_defaultFont, new Vector2(20f, 130f), txt.ToString(), HorizontalAlignment.Center, -1, 22);
+	}
+
+	private Font _defaultFont = ThemeDB.FallbackFont;
+	private StringBuilder sb = new();
+
+	public StringBuilder ToTxt(float val) {
+		sb.Clear();
+		if (Type == Drawmode.Fps) {
+			return sb.Append($"{val:F0} {Type} {Min:f0}-{Max:f0} {AllTimeMin:f0}-{AllTimeMax:f0}");
+		}
+
+		return sb.Append($"{val:F1} {Type} {Min:f1}-{Max:f1} {AllTimeMin:f1}-{AllTimeMax:f1}");
 	}
 }
 
-record StatsState(int Size) {
-	public StatsStateEntry fps = new(Size, Drawmode.Fps);
-	public StatsStateEntry ms = new(Size, Drawmode.Ms);
-	public StatsStateEntry memTotal = new(Size, Drawmode.MemTotal);
-	public StatsStateEntry memHeap = new(Size, Drawmode.MemHeap);
+record StatsStore(int Size, Label control) {
+	public StatsStoreEntry fps = new(Size, Drawmode.Fps, control, true);
+	public StatsStoreEntry ms = new(Size, Drawmode.Ms, control, false);
+	public StatsStoreEntry memTotal = new(Size, Drawmode.MemTotal, control, false);
+	public StatsStoreEntry memHeap = new(Size, Drawmode.MemHeap, control, false);
 
-	public StatsStateEntry this[Drawmode drawmode] {
+	public StatsStoreEntry this[Drawmode drawmode] {
 		get {
 			return drawmode switch {
 				Drawmode.Fps => fps,
 				Drawmode.Ms => ms,
 				Drawmode.MemTotal => memTotal,
 				Drawmode.MemHeap => memHeap,
-				_ => throw new IndexOutOfRangeException()
+				_ => throw new IndexOutOfRangeException(),
 			};
 		}
 	}
 }
 
-public class Stats {
-	private DateTime _last;
-
+public class Stats(int sizeX, int sizeY, Label control) {
 	Drawmode _drawmode = Drawmode.Fps;
 	private int _sizeX;
 	private int _sizeY;
 
-	private StatsState state;
+	private StatsStore _store = new(sizeX, control);
 	private readonly Process _process = System.Diagnostics.Process.GetCurrentProcess();
 
-	public Stats(int sizeX, int sizeY, Control control) {
-		this._sizeX = sizeX;
-		this._sizeY = sizeY;
-		this._control = control;
-
-		state = new(sizeX);
-
-		Process();
-		var task = Task.Run(async () => {
-			for (;;) {
-				await Task.Delay(5_000);
-				for (var i = 0; i < (int)Drawmode.Max; i++) {
-					var entry = state[(Drawmode)i];
-					entry.allTimeMin = entry.min;
-					entry.allTimeMax = entry.max;
-				}
-			}
-		});
-	}
-
 	public void NextDrawMode() {
+		_store[_drawmode].IsActive = false;
 		var d1 = ((int)_drawmode + 1) % (int)Drawmode.Max;
 		var d2 = (Drawmode)d1;
 		_drawmode = d2;
+		_store[_drawmode].IsActive = true;
+		Log.LastCall("stats:debug", _store[_drawmode].Type.ToString(), "active");
 	}
 
-	public void Process() {
-		var now = DateTime.Now;
-		var diff = now - _last;
-		_last = now;
+	private DateTime _beginTime;
 
-		state.fps.data[_sizeX - 1] = (float)(1000f / diff.TotalMilliseconds);
-		state.ms.data[_sizeX - 1] = (float)diff.TotalMilliseconds;
-		state.memTotal.data[_sizeX - 1] = _process.PrivateMemorySize64 / (float)(1024 * 1024);
-		state.memHeap.data[_sizeX - 1] = System.GC.GetTotalMemory(forceFullCollection: false) / (float)(1024 * 1024);
-		for (var i = 0; i < (_sizeX - 1); i++) {
-			state.fps.data[i] = state.fps.data[i + 1];
-			state.ms.data[i] = state.ms.data[i + 1];
-			state.memTotal.data[i] = state.memTotal.data[i + 1];
-			state.memHeap.data[i] = state.memHeap.data[i + 1];
-		}
+	public void Begin() {
+		_beginTime = DateTime.UtcNow;
+	}
 
-		for (var i = 0; i < (int)Drawmode.Max; i++) {
-			var entry = state[(Drawmode)i];
-			entry.min = entry.data.Min();
-			entry.max = entry.data.Max();
-			entry.allTimeMin = MathF.Min(entry.allTimeMin, entry.min);
-			entry.allTimeMax = MathF.Max(entry.allTimeMax, entry.max);
-		}
+	public DateTime End() {
+		var timeNow = DateTime.UtcNow;
+		var diff = (float)(timeNow - _beginTime).TotalMilliseconds;
+
+		_store.fps.Draw(1000 / diff, 200);
+		_store.ms.Draw(diff, 200);
+		var mem = _process.PrivateMemorySize64 / (float)(1024 * 1024);
+		_store.memTotal.Draw(mem, mem);
+		var heap = System.GC.GetTotalMemory(forceFullCollection: false) / (float)(1024 * 1024);
+		_store.memHeap.Draw(heap, heap);
 
 		//if (Random.Shared.Next(100) > 95)
 		//	Debugger.Break();
+		return timeNow;
 	}
 
-	private Font _defaultFont = ThemeDB.FallbackFont;
-	private Control _control;
-
-	public void Draw() {
-		var txt = state[_drawmode].ToTxt();
-
-		for (var i = 0; i < _sizeX; i++) {
-			var value = state[_drawmode].data[i];
-			_control.DrawLine(new Vector2(i * 8, 0), new Vector2(i * 8, (float)value), Colors.Green, 1f);
-		}
-
-		_control.DrawString(_defaultFont, new Vector2(20f, 130f), txt, HorizontalAlignment.Center, -1, 22);
+	public void Update() {
+		_beginTime = End();
 	}
 }

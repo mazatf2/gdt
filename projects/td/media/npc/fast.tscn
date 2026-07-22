@@ -2,11 +2,4 @@
 
 [ext_resource type="PackedScene" uid="uid://c0h76gbtqqtmj" path="res://media/npc/fast.blend" id="1_b4vsm"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b4vsm"]
-size = Vector3(0.50000006, 1.6, 0.20000015)
-
 [node name="fast" unique_id=1238479540 instance=ExtResource("1_b4vsm")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="1" unique_id=1611419617]
-transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0.010737426, 0.8, 0.04281791)
-shape = SubResource("BoxShape3D_b4vsm")

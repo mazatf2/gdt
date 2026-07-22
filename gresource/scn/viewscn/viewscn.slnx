@@ -1,0 +1,17 @@
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="ExportDebug"/>
+		<BuildType Name="ExportRelease"/>
+	</Configurations>
+	<Project Path="viewscn.2dog/viewscn.2dog.csproj">
+		<BuildType Project="Debug"/>
+	</Project>
+	<Project Path="viewscn.csproj"/>
+	<Project Path="viewscn.tests/viewscn.tests.csproj">
+		<BuildType Project="Debug"/>
+	</Project>
+	<Project Path="viewscn.web/viewscn.web.csproj">
+		<BuildType Project="Debug"/>
+	</Project>
+</Solution>

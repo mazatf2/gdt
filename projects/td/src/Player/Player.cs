@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using gdt.shared;
 using Godot;
 
@@ -25,7 +25,6 @@ public partial class Player : Godot.CharacterBody3D {
 			});
 			AddChild(cam);
 			cam.Owner = GetParent();
-			Debugger.Break();
 			Log.LastCall("player:debug", "add cam");
 		}
 
@@ -41,12 +40,14 @@ public partial class Player : Godot.CharacterBody3D {
 	Vector3 _camRotation = Vector3.Zero;
 	private Vector2 _mouseScreenRelative2 = Vector2.Zero;
 
-	public override void _Input(InputEvent @event) {
-		switch (@event) {
+	public override void _Input(InputEvent _ev) {
+		
+		using var inputEvent = _ev;
+		switch (_ev) {
 			case InputEventMouseMotion ev: {
 				RotateY(-ev.ScreenRelative.X * _mouseSensitivity);
 				cam?.RotateX(-ev.ScreenRelative.Y * _mouseSensitivity);
-				_camRotation.X = Math.Clamp(cam.Rotation.X, -float.DegreesToRadians(70), float.DegreesToRadians(70));
+				_camRotation.X = float.Clamp(cam.Rotation.X, -float.DegreesToRadians(70), float.DegreesToRadians(70));
 				_camRotation.Y = _camRotation.Y;
 				_camRotation.Z = _camRotation.Z;
 				cam.Rotation = _camRotation;
@@ -61,8 +62,6 @@ public partial class Player : Godot.CharacterBody3D {
 				break;
 			}
 		}
-
-		@event.Dispose();
 	}
 
 	private Vector2 _lastInputTargetDir = Vector2.Zero;
@@ -70,6 +69,8 @@ public partial class Player : Godot.CharacterBody3D {
 	private Vector2 _inputTargetDir2;
 	private Vector3 _targetDir3;
 	private Vector3 _movementTemp3;
+	private float _speed;
+	private Vector2 _mouseVel2;
 
 	public override void _PhysicsProcess(double _d) {
 		var delta = (float)_d;
@@ -95,18 +96,33 @@ public partial class Player : Godot.CharacterBody3D {
 			_lastInputTargetDir.Y = _inputTargetDir2.Y;
 		}
 
-		var speed = IsOnFloor() ? _speedFloor : _speedAir;
+		_speed = IsOnFloor() ? _speedFloor : _speedAir;
+		if (!IsOnFloor() && Input.IsActionPressed(Project.UiLeft)) {
+			_mouseVel2 = Input.GetLastMouseVelocity();
+
+			if (_mouseVel2.X < -50) {
+				_speed = _speedFloor;
+			}
+		}
+		else if (Input.IsActionPressed(Project.UiRight)) {
+			_mouseVel2 = Input.GetLastMouseVelocity();
+
+			if (_mouseVel2.X > 50) {
+				_speed = _speedFloor;
+			}
+		}
 
 		_movementTemp3.X = _inputTargetDir2.X;
 		_movementTemp3.Y = 0;
 		_movementTemp3.Z = _inputTargetDir2.Y;
-		_targetDir3 = Transform.Basis * _movementTemp3 * speed;
+		_targetDir3 = Transform.Basis * _movementTemp3 * _speed;
 
 		_velocity.X = _targetDir3.X;
 		_velocity.Z = _targetDir3.Z;
 		Velocity = _velocity;
 
 		var hit = MoveAndSlide();
+		
 
 		/*if (hit) {
 			for (var i = 0; i < GetSlideCollisionCount(); i++) {

@@ -9,7 +9,7 @@ size = Vector3(0.50000006, 1.6, 0.20000015)
 [node name="npc" type="Node3D" unique_id=1640625947 node_paths=PackedStringArray("NavAgent", "_raycast")]
 script = ExtResource("1_prhqs")
 NavAgent = NodePath("NavigationAgent3D")
-_raycast = NodePath("")
+_raycast = NodePath("RayCast3D")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1266993694]
 debug_enabled = true
@@ -21,3 +21,9 @@ transform = Transform3D(-1, 0, -3.2584137e-07, 0, 1, 0, 3.2584137e-07, 0, -1, 0.
 shape = SubResource("BoxShape3D_mr6lx")
 
 [node name="fast" parent="." unique_id=1238479540 instance=ExtResource("1_k0xt6")]
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1459164445]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+target_position = Vector3(0, 0, -1)
+collision_mask = 8
+collide_with_areas = true

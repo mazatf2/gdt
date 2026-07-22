@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://chphj5y71xnx0"]
+
+[ext_resource type="Script" uid="uid://b3m3me18qknl2" path="res://viewscn.tests/data/scene2.gd" id="1_2qe25"]
+[ext_resource type="PackedScene" uid="uid://b0boee0nn434x" path="res://viewscn.tests/data/scene1.scn" id="2_lebvn"]
+
+[node name="foo" type="Node" unique_id=1656515815]
+script = ExtResource("1_2qe25")
+
+[node name="Node" parent="." unique_id=1030541647 instance=ExtResource("2_lebvn")]

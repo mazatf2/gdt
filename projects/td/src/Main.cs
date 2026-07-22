@@ -32,15 +32,14 @@ public partial class Main : Godot.Control {
 	}
 
 	void Spawn(int count) {
-		Spawner.Spawn((spawnPoint: _spawnPoint, endPoint: _end, npc: _npc, count: count));
+		Spawner.Spawn((spawnPoint: _npcSpawnPoint, endPoint: _npcEnd, npc: _npc, count: count));
 	}
 
-	public override void _Ready() {
-		_stats = new Stats(128, 16, this);
-		_spawnPoint = GetNode<Node3D>("start");
-		_end = GetNode<Node3D>("end");
+	public async override void _Ready() {
+		_npcSpawnPoint = GetNode<Node3D>("start");
+		_npcEnd = GetNode<Node3D>("end");
 		_navigation = GetNode<NavigationRegion3D>("NavigationRegion3D");
-		Debug.Assert(_spawnPoint != null);
+		Debug.Assert(_npcSpawnPoint != null);
 
 		var gridMap = GetNode<GridMap>("%GridMap");
 		var areaCon = GetNode<Node3D>("%areaCon");
@@ -48,14 +47,17 @@ public partial class Main : Godot.Control {
 		areaCon.Position = areaCon.Position with { Y = areaCon.Position.Y + 1 };
 		areaCon.TraverseChildren<Node>(i => i.QueueFree());
 
+		await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); //sometimes needed
+		
 		var dupes = GetNode<Node3D>("%dupes");
 		_dupesObs1 = dupes.GetNode<Node3D>("obs1m");
 		_dupesObs1.Position = Vector3.Zero;
 		_dupesObs1Preview = dupes.GetNode<Node3D>("obs1m-preview");
 		_dupesObs1Preview.Position = Vector3.Zero;
-		_npc = dupes.GetNode<Node3D>("npc");
+		_npc = dupes.GetNode<Npc>("npc");
 
 		_dispose.area = new Area3D() {
+			Name = "placementArea3D",
 			CollisionLayer = (uint)Project.Physics3DLayer.Placement,
 			CollisionMask = (uint)Project.Physics3DLayer.Placement,
 			Children = [
@@ -75,17 +77,14 @@ public partial class Main : Godot.Control {
 
 			var t2 = transfrom;
 
-			var pos = t2.Origin;
-			var rot = t2.Basis.GetEuler();
-			var scale = t2.Basis.Scale;
-
-			//continue;
+			var pos = t2.Pos;
+			var rot = t2.Rot;
+			var scale = t2.Scale;
+			
 			var temp = (Node3D)_dispose.area.Duplicate();
 			temp.Position = pos;
 			areaCon.AddChild(temp);
 			temp.Owner = this;
-
-			//Debugger.Break();
 		}
 
 		_dispose.area.QueueFree();
@@ -103,91 +102,109 @@ public partial class Main : Godot.Control {
 	private Node3D _dupesObs1Preview;
 	private Node3D _areaCon;
 	private NavigationRegion3D? _navigation;
-	private Node3D? _spawnPoint;
-	private Node3D? _end;
-	private Node3D? _npc;
-	private Stats _stats;
+	private Node3D? _npcSpawnPoint;
+	private Node3D? _npcEnd;
+	private Npc? _npc;
 
 	public override void _UnhandledInput(InputEvent _ev) {
-		if (_ev is InputEventMouseButton ev) {
-			if (ev.Pressed == false) {
-				return;
-			}
+		using var @event = _ev;
+		switch (_ev) {
+			case InputEventMouseButton ev:
+				if (ev.ButtonIndex == MouseButton.Left) {
+					var hit = Misc.CameraPick((viewport: GetViewport(),
+							flags: Project.Physics3DLayer.Placement,
+							queryMutate: query
+						));
+					if (hit == null) { return; }
 
-			if (ev.ButtonIndex == MouseButton.Left) {
-				var hit = Misc.CameraPick((viewport: GetViewport(),
-						flags: Project.Physics3DLayer.Placement,
-						queryMutate: query
-					));
-				if (hit == null) { return; }
+					var col = hit.Collider().As<Area3D>();
+					col.SetMeta("isUse", true);
+					var dup = (Node3D)_dupesObs1.Duplicate();
 
-				var col = hit.Collider().As<Area3D>();
-				col.SetMeta("isUse", true);
-				var dup = (Node3D)_dupesObs1.Duplicate();
+					_navigation.AddChild(dup);
+					dup.Owner = this;
+					dup.GlobalPosition = col.GlobalPosition;
+					_navigation.BakeNavigationMesh();
+				}
+				else if (ev.ButtonIndex == MouseButton.Right) {
+					var hit = Misc.CameraPick((viewport: GetViewport(),
+							flags: Project.Physics3DLayer.Placement,
+							queryMutate: query
+						));
+					if (hit == null) { return; }
 
-				_navigation.AddChild(dup);
-				dup.Owner = this;
-				dup.GlobalPosition = col.GlobalPosition;
-				_navigation.BakeNavigationMesh();
-			}
-			else if (ev.ButtonIndex == MouseButton.Right) {
-				var hit = Misc.CameraPick((viewport: GetViewport(),
-						flags: Project.Physics3DLayer.Placement,
-						queryMutate: query
-					));
-				if (hit == null) { return; }
+					var col = hit.Collider().As<Area3D>();
+					col.SetMeta("isUse", true);
 
-				var col = hit.Collider().As<Area3D>();
-				col.SetMeta("isUse", true);
+					var dup = _dupesObs1Preview;
+					dup.GlobalPosition = col.GlobalPosition;
+				}
+				else if (ev.ButtonIndex == MouseButton.WheelDown) {
+					Log.TimeStart(out var timeEnd);
+					Spawn(3);
+					timeEnd("main:debug", "spawn 3");
+				}
+				else if (ev.ButtonIndex == MouseButton.WheelUp) {
+					Log.TimeStart(out var timeEnd);
+					Spawn(6);
+					timeEnd("main:debug", "spawn 6");
+				}
 
-				var dup = _dupesObs1Preview;
-				dup.GlobalPosition = col.GlobalPosition;
-				_stats.NextDrawMode();
-			}
-			else if (ev.ButtonIndex == MouseButton.WheelDown) {
-				Log.TimeStart(out var timeEnd);
-				Spawn(3);
-				timeEnd("npc", "spawn 3");
-			}
-			else if (ev.ButtonIndex == MouseButton.WheelUp) {
-				Log.TimeStart(out var timeEnd);
-				Spawn(6);
-				timeEnd("npc", "spawn 6");
+				if (ev.ButtonIndex == MouseButton.WheelUp && Input.IsPhysicalKeyPressed(Key.F3)) {
+					State.Stats.NextDrawMode();
+				}
+
+				break;
+			case InputEventKey ev: {
+				if (ev is { Pressed: true, PhysicalKeycode: Key.F3, ShiftPressed: false, }) {
+					State.IsStatsActive.value = !State.IsStatsActive.value;
+				}
+				else if (ev is { Pressed: true, PhysicalKeycode: Key.F3, ShiftPressed: true, }) {
+					State.Stats.NextDrawMode();
+				}
+
+				break;
 			}
 		}
-
-		_ev.Dispose(); //needed?
 	}
 
 	public override void _Process(double d) {
 		var delta = (float)d;
 		lookAtCam?.Process(delta);
-		_stats?.Process();
-		QueueRedraw();
-	}
-
-	public override void _Draw() {
-		_stats?.Draw();
-		//var stateDebug = GetNode<Label>("stateDebug");
-		//stateDebug.Text = State.ToTxt();
 	}
 
 	public override void _ExitTree() {
 		var ids = GetOrphanNodeIds(); //125? --verbose shows no leaks
 		var d1 = () => PrintOrphanNodes();
 		//Debugger.Break();
+		Log.LastCall("main:exit", ids.Count + "", "orphan nodes");
 
 		Spawner.ListNpc.ForEach(n => { n.QueueFree(); });
 	}
 }
 
 class Spawner {
-	public static readonly List<Npc> ListNpc = Enumerable.Repeat(new Npc() { CanReUse = true, }, 20).ToList();
+	public static readonly List<Npc> ListNpc = [];
+
+	public static void SpawnQueue(in Node3D toSpawnNpc, int count) {
+	}
 
 	public static void Spawn(in (Node3D spawnPoint, Node3D endPoint, Node3D npc, int count) props /*,in Action<(Npc npc, bool t)> cb*/) {
+		if (ListNpc.Count < 20) {
+			for (var i = 0; i < 20; i++) {
+				var temp = props.npc.Duplicate() as Npc;
+				temp.CanReUse = true;
+				ListNpc.Add(temp);
+			}
+		}
+
 		for (var i = 0; i < props.count; i++) {
-			var npc = ListNpc.Find(n => n.CanReUse);
+			var npc = ListNpc.Find(n => {
+				return n.CanReUse;
+			});
+
 			if (npc == null) {
+				Log.LastCall("spawner:spawn", npc?.Name, "is null");
 				npc = (Npc)props.npc.Duplicate();
 				ListNpc.Add(npc);
 			}

@@ -4,9 +4,10 @@
 		<Nullable>enable</Nullable>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net10.0</TargetFramework>
+		<RootNamespace>gdt.gresource.tscn2.test</RootNamespace>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="../parser/gdt.gresource.tscn2.parser.csproj" />
+		<ProjectReference Include="../parser/parser.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="TUnit" Version="1.44.39"/>

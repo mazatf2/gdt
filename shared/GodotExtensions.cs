@@ -5,33 +5,64 @@ namespace gdt.shared;
 
 public static partial class GodotExtensions {
 	//callbacks to self and children. callback(this), callback(this.children)
-	public static T Traverse<T>(this Node node, Action<T> callback) where T : Node {
-		callback(node as T);
-		foreach (var child in node.GetChildren()) {
-			child.Traverse(callback);
+	extension(Node node) {
+		public T Traverse<T>(Action<T> callback) where T : Node {
+			callback(node as T);
+			foreach (var child in node.GetChildren()) {
+				child.Traverse(callback);
+			}
+
+			return (T)node;
+		}
+		
+		public T TraverseChildren<T>(Action<T> callback) where T : Node {
+			foreach (var child in node.GetChildren()) {
+				callback(child as T);
+				child.TraverseChildren(callback);
+			}
+
+			return (T)node;
 		}
 
-		return (T)node;
-	}
 
-	public static T TraverseChildren<T>(this Node node, Action<T> callback) where T : Node {
-		foreach (var child in node.GetChildren()) {
-			callback(child as T);
-			child.TraverseChildren(callback);
+		//callbacks to parents only. callback(this.parent)
+		public T TraverseParents<T>(Action<T> callback) where T : Node {
+			var parent = node.GetParent();
+			if (parent != null) {
+				callback(parent as T);
+				parent.TraverseParents(callback);
+			}
+
+			return (T)node;
 		}
+		
+		public Node Traverse(Action<Node> callback) {
+			callback(node);
+			foreach (var child in node.GetChildren()) {
+				child.Traverse(callback);
+			}
 
-		return (T)node;
-	}
-
-	//callbacks to parents only. callback(this.parent)
-	public static T TraverseParents<T>(this Node node, Action<T> callback) where T : Node {
-		var parent = node.GetParent();
-		if (parent != null) {
-			callback(parent as T);
-			parent.TraverseParents(callback);
+			return node;
 		}
+		
+		public Node TraverseChildren(Action<Node> callback) {
+			foreach (var child in node.GetChildren()) {
+				callback(child);
+				child.TraverseChildren(callback);
+			}
 
-		return (T)node;
+			return node;
+		}
+		
+		public Node TraverseParents(Action<Node> callback) {
+			var parent = node.GetParent();
+			if (parent != null) {
+				callback(parent);
+				parent.TraverseParents(callback);
+			}
+
+			return node;
+		}
 	}
 }
 
@@ -66,7 +97,7 @@ public static partial class GodotExtensions {
 }
 
 public static partial class GodotExtensions {
-	extension(Camera3D cam) {
+	extension(Camera3D camera3D) {
 		public bool Raycast(Godot.Vector3 to) {
 			return true;
 		}
@@ -74,11 +105,20 @@ public static partial class GodotExtensions {
 }
 
 public static partial class GodotExtensions {
+	extension(Transform3D transform3D) {
+		///<summary>transform3D.Origin</summary>
+		public Vector3 Pos => transform3D.Origin;
+
+		///<summary>transform3D.Basis.GetEuler()</summary>
+		public Vector3 Rot => transform3D.Basis.GetEuler();
+
+		///<summary>transform3D.Basis.Scale</summary>
+		public Vector3 Scale => transform3D.Basis.Scale;
+	}
+}
+
+public static partial class GodotExtensions {
 	extension(Node node) {
-		public bool IsEditorHint {
-			get {
-				return Godot.Engine.IsEditorHint();
-			}
-		}
+		public bool IsEditorHint => Godot.Engine.IsEditorHint();
 	}
 }

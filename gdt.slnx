@@ -15,8 +15,11 @@
 	</Folder>
 	<Folder Name="/gresource/"/>
 	<Folder Name="/gresource/tscn2/">
-		<Project Path="gresource/tscn2/parser/gdt.gresource.tscn2.parser.csproj"/>
-		<Project Path="gresource/tscn2/test/gdt.gresource.tscn2.test.csproj"/>
-		<Project Path="gresource/tscn2/test_godotproject/gdt.gresource.tscn2.test_godotproject.csproj"/>
+		<Project Path="gresource/tscn2/parser/parser.csproj"/>
+		<Project Path="gresource/tscn2/test/test.csproj"/>
+		<Project Path="gresource/tscn2/test_godotproject/test_godotproject.csproj"/>
+	</Folder>
+	<Folder Name="/gresource/scn/">
+		<!--<Project Path="gresource/scn/viewscn/viewscn.csproj"/>-->
 	</Folder>
 </Solution>
